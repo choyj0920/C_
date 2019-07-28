@@ -1,0 +1,3 @@
+﻿  Main.c
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc5_0727\main.c(85): warning C4101: 'm' :참조되지 않은 지역 변수입니다.
+  LearnC5_0727.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnC\x64\Debug\LearnC5_0727.exe
