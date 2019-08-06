@@ -1,0 +1,10 @@
+﻿  Main.c
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(37): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(173): warning C4098: 'user_strlen': 'void' 함수에서 값을 반환하고 있습니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(180): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(181): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(191): warning C4090: 'return': 'const' 한정자가 서로 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(182): warning C4090: '초기화 중': 'const' 한정자가 서로 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(183): warning C4090: '초기화 중': 'const' 한정자가 서로 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc7_0803\main.c(195): warning C4715: 'user_strstr': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  LearnC7_0803.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnC\x64\Debug\LearnC7_0803.exe

@@ -1,3 +1,4 @@
+/*
 #include<stdio.h>
 #include<Windows.h>
 
@@ -62,3 +63,4 @@ int array_calculate(int * array, int count, float* average) {
 	return total;
 
 }
+*/

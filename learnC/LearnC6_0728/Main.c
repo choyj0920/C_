@@ -49,6 +49,7 @@ int main() {
 	printf("a = %d, b = %d \n", a, b);
 
 
+
 	//수업용 코드
 	system("pause");
 	return 0;

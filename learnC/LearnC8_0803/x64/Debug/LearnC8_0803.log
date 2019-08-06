@@ -1,0 +1,6 @@
+﻿  Main.c
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc8_0803\main.c(47): warning C4047: '함수': 'char *'의 간접 참조 수준이 'char *[260]'과(와) 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc8_0803\main.c(47): warning C4024: 'fgets': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc8_0803\main.c(48): warning C4047: '함수': 'const char *const '의 간접 참조 수준이 'char *[260]'과(와) 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc8_0803\main.c(48): warning C4024: 'printf': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+c:\users\choyj\source\repos\sbsar_\c_\learnc\learnc8_0803\main.c(61): error C2146: 구문 오류: ';'이(가) 'fprintf' 식별자 앞에 없습니다.
