@@ -1,3 +1,4 @@
+/*
 #include<stdio.h>
 #include<Windows.h>
 #include <string.h> 
@@ -118,3 +119,4 @@ int main() {
 
 }
 
+*/
