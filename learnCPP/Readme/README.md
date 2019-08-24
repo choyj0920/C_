@@ -1,7 +1,3 @@
----
-typora-root-url: ./
----
-
 # c++
 
 ## 1. 0810
@@ -93,7 +89,7 @@ int main() {
 
 ```
 
-![0810](/0810.PNG)
+![](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/0810.PNG?raw=true)
 
 ## 2.0811 C++
 
@@ -344,7 +340,7 @@ character::~character() {
 
 main.cpp
 
-![0811](/0811.PNG)
+![](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/0811.PNG?raw=true)
 
 ## 3. 0817 c++
 
@@ -489,4 +485,4 @@ void Beggar::ddagi(apple* A)
 
 ```
 
-![0817](/0817.PNG)
+![](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/0817.PNG?raw=true)
