@@ -1,0 +1,11 @@
+﻿  Monster.cpp
+  Status.cpp
+  _HW_CPP_0824.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(9): warning C4101: 'name' :참조되지 않은 지역 변수입니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(8): warning C4101: 'att' :참조되지 않은 지역 변수입니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(8): warning C4101: 'hp' :참조되지 않은 지역 변수입니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(8): warning C4101: 'trib' :참조되지 않은 지역 변수입니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(8): warning C4101: 'def' :참조되지 않은 지역 변수입니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0824\_hw_cpp_0824.cpp(8): warning C4101: 'pers' :참조되지 않은 지역 변수입니다.
+  코드를 생성하고 있습니다...
+  _HW_CPP_0824.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\_HW\Debug\_HW_CPP_0824.exe
