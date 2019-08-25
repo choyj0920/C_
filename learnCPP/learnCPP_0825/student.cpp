@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "student.h"
 
-
-
 student::student(int sid, const char * name, int age): person(name,age)
 {
 	student_id_ = sid;
