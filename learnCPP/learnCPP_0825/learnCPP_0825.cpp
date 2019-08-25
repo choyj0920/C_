@@ -57,7 +57,7 @@ int main()
 	}
 	*/
 	//연습문제 10
-	/*
+	
 	note gongcheck("싸인펜", 플라스틱, 25, 1);
 	gongcheck.setcolor(red);
 	gongcheck.setmuch(조금);
@@ -66,12 +66,13 @@ int main()
 	gongcheck.setcolor(black);
 	gongcheck.setname("볼펜");
 	gongcheck.setmat(나무);
-	gongcheck.display();*/
+	gongcheck.display();
 
 	//연습문제 11
+	/*
 	student s(123456789, "순신", 35);
 	s.showpersoninfo();
-
+	*/
 }
 
 void set_info(MaleFemale * M) {
