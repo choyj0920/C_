@@ -1,0 +1,6 @@
+﻿  pch.cpp
+  character.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp\character.cpp(27): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  _HW_CPP_0811.cpp
+  코드를 생성하고 있습니다...
+  _HW_CPP.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\_HW\x64\Debug\_HW_CPP_0811.exe

@@ -1,0 +1,8 @@
+﻿  pch.cpp
+  SUM.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0818_5\sum.cpp(7): error C2084: 'SUM::SUM(void)' 함수에 이미 본문이 있습니다.
+  c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0818_5\sum.h(36): note: '{ctor}'의 이전 정의를 참조하십시오.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0818_5\sum.cpp(12): error C2084: 'SUM::~SUM(void)' 함수에 이미 본문이 있습니다.
+  c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0818_5\sum.h(37): note: '{dtor}'의 이전 정의를 참조하십시오.
+  _HW_CPP_0818_5.cpp
+  코드를 생성하고 있습니다...

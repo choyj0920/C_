@@ -1,0 +1,7 @@
+﻿  MathM.cpp
+  Vector2.cpp
+  _HW_CPP_0831_2.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0831_2\_hw_cpp_0831_2.cpp(8): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0831_2\_hw_cpp_0831_2.cpp(10): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+  코드를 생성하고 있습니다...
+  _HW_CPP_0831_2.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\_HW\Debug\_HW_CPP_0831_2.exe

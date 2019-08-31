@@ -1,0 +1,9 @@
+﻿  MathM.cpp
+  _HW_CPP_0831.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0831\_hw_cpp_0831.cpp(10): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0831\_hw_cpp_0831.cpp(12): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+  vector2.cpp
+c:\users\choyj\source\repos\sbsar_\c_\_hw\_hw_cpp_0831\vector2.cpp(37): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+_HW_CPP_0831.obj : error LNK2019: "class vector2 __cdecl dir_v(void)" (?dir_v@@YA?AVvector2@@XZ) 외부 기호(참조 위치: _main 함수)에서 확인하지 못했습니다.
+C:\Users\choyj\source\repos\SBSar_\C_\_HW\Debug\_HW_CPP_0831.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
