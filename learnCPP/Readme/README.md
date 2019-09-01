@@ -54,5 +54,12 @@
 
 ## [8._0901](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/8.%200901%20C%2B%2B.md)
 
+- 클래스 템플릿
+- 예외 처리 기법
+- try~catch, throw
+- 함수 예외 처리
+- 스택 풀기
+- 파일 입출력
+
 ## [9._0907](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/8.%200907%20C%2B%2B.md)
 
