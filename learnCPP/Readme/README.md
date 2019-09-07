@@ -61,5 +61,5 @@
 - 스택 풀기
 - 파일 입출력
 
-## [9._0907](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/8.%200907%20C%2B%2B.md)
+## [9._0907]([https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/9.%200907%20C%2B%2B.md](https://github.com/choyj0920/SBS_academy_unreal_engine/blob/master/learnCPP/Readme/9. 0907 C%2B%2B.md))
 
