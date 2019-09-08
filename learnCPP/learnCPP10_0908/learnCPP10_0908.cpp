@@ -1,12 +1,12 @@
 ﻿#include "pch.h"
-#include <iostream>
-#include <map>
-#include "item.h"
-
 
 void show_inven(map<string, item> inven);
 void searh_info(map<string, item> inven);
 void edit_info(map<string, item>* inven);
+void add_info(map<string, item>* inven);
+void load_stu(map<string, item>* inven);
+static int item_cou = 0;
+
 int main()
 {
 	//STL map 예제
@@ -65,38 +65,34 @@ int main()
 
 	//stl map 연습문제
 	map<string, item> inven;
-	inven.insert(pair<string, item>("청동검", item("청동검", 500, 9)));
-	inven.insert(pair<string, item>("철도끼", item("철도끼", 900, 8)));
-	inven.insert(pair<string, item>("가죽갑옷", item("가죽갑옷", 250, 9)));
-	inven.insert(pair<string, item>("천신발", item("천신발", 100, 10)));
-	inven.insert(pair<string, item>("각궁", item(" 각궁 ", 2500, 6)));
-
-	//map<string, item> ::iterator iter;
-	//for (iter = inven.begin(); iter != inven.end(); ++iter) {
-	//	(*iter).second.show_info();
-	//}
-	//cout << endl;
-
 	int menu = 0;
-	while (menu != 3) {
+	load_stu(&inven);
+	while (menu != 4) {
 		menu = 0;
-		while (menu < 1 || menu>3) {
+		while (menu < 1 || menu>4) {
 			cout << "============================" << endl;
 			cout << "1. 정보 검색" << endl;
 			cout << "2. 정보 삭제" << endl;
-			cout << "3. 나가기" << endl;
+			cout << "3. 정보 삽입" << endl;
+			cout << "4. 나가기" << endl;
 			cout << "무엇을 하시겠습니까? ";
 			cin >> menu;
 		}
 		switch (menu)
 		{
 		case 1:
+			cout << "(정보 검색)\n";
 			searh_info(inven);
 			break;
 		case 2:
+			cout << "(정보 삭제)\n";
 			edit_info(&inven);
 			break;
 		case 3:
+			cout << "(정보 삽입)\n";
+			add_info(&inven);
+			break;
+		case 4:
 			cout << "종료... \n";
 			break;
 		}
@@ -152,6 +148,60 @@ void edit_info(map<string, item>* inven) {
 			continue;
 		}
 		inven->erase(name);
+		item::save_file(inven,inven->size());
 	} while (true);
 
+}
+
+//정보 삽입
+void add_info(map<string, item>* inven) {
+	string name;
+	int price, grade;
+	do {
+		show_inven(*inven);
+		cout << "아이템 이름? :";
+		cin >> name;
+		if (name == "Q") {
+			break;
+		}
+		//키 값 검사
+		if (inven->find(name) != inven->end()) {
+			cout << "그 이름의 아이템이 이미 있습니다.\n";
+			continue;
+		}
+		cout << "아이템 가격? : ";
+		cin >> price;
+		cout << "아이템 등급? : ";
+		cin >> grade;
+		inven->insert(pair<string, item>(name, item(name, price, grade)));
+		item::save_file(inven, inven->size());
+
+
+	} while (true);
+}
+
+//파일 로드
+void load_stu(map<string, item>* inven) {
+
+	ifstream inFile("Data.txt");
+	if (inFile.is_open()) {
+		string name;
+		char trash[100];
+		int price, grade;
+		item_cou = -1; //맨 마지막줄은 빈칸이기 때문
+		while (!inFile.eof()) {
+			inFile >> name >> price >> grade;
+			if (name == "")	break;
+			inven->insert(pair<string, item>(name, item(name, price, grade)));
+			item_cou++;
+		}
+		
+		inFile.close();
+		
+		cout << "파일 로드 완료!\n";
+	}
+	else {
+		cout << "파일이 없습니다.\n";
+		return;
+	}
 }

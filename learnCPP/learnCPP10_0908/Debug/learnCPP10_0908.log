@@ -1,2 +1,6 @@
-﻿  learnCPP10_0908.cpp
+﻿  pch.cpp
+  item.cpp
+  learnCPP10_0908.cpp
+c:\users\choyj\source\repos\sbsar_\c_\learncpp\learncpp10_0908\learncpp10_0908.cpp(192): warning C4101: 'trash' :참조되지 않은 지역 변수입니다.
+  코드를 생성하고 있습니다...
   learnCPP10_0908.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnCPP\Debug\learnCPP10_0908.exe
