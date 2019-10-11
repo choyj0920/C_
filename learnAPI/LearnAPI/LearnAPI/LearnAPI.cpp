@@ -85,7 +85,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //  함수: MyRegisterClass()
 //
 //  용도: 창 클래스를 등록합니다.
-//
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;    //윈도우 클래스 확장이라는 구조체
