@@ -12,6 +12,10 @@ HWND _hWnd;																//메인 윈도우 핸들.
 LPCWSTR _szWinClassName = L"MAKE_WINDOW2";
 SortAlgorithmClass sort;
 
+bool _isShow = false;
+char _szBuffer1[20] = { 0, };
+TCHAR _szBuffer2[20] = { L"안녕하세요" };
+
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 TCHAR str[MAX_PATH] = { 0, };
@@ -28,6 +32,10 @@ void myRegisterClass(HINSTANCE hInstance);
 BOOL CreateShowWindow(HINSTANCE hInstance, int nCmdShow);
 //메시지 루프 함수
 int MessageLoop(HINSTANCE hInstace);
+
+//함수 정의
+void ConvertUnicodeToMultibyte(TCHAR *pUnicode, char *pMultybyte);
+void ConvertMultibyteToUnicode(char* pMultybyte, TCHAR *pUnicode);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -86,7 +94,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
-		sort.SelectedSort(hdc, RECT{ 500,120,100,100 });
+		//sort.MergeSort(hdc, RECT{ 50,100,100,100 },true);;
+		//swprintf_s(_szBuffer2, sizeof(_szBuffer2), L"%s", _szBuffer1);		
+		//ConvertMultibyteToUnicode(_szBuffer1, _szBuffer2);
+		//TextOut(hdc, 100, 100, _szBuffer2, lstrlen(_szBuffer2));
+		//sprintf_s(_szBuffer1, sizeof(_szBuffer1), "%s", _szBuffer2);
+		ConvertUnicodeToMultibyte(_szBuffer2, _szBuffer1);
+		TextOutA(hdc, 100, 100, _szBuffer1, sizeof(_szBuffer1));
+		EndPaint(hWnd, &ps);
 		break;
 	}
 	case WM_DESTROY:
@@ -142,5 +157,14 @@ int MessageLoop(HINSTANCE hInstace)
 
 void paintprint(HWND hWnd, int n)
 {
+
+}
+
+
+void ConvertUnicodeToMultibyte(TCHAR *pUnicode, char *pMultybyte) {
+	WideCharToMultiByte(CP_ACP, 0, pUnicode, lstrlen(pUnicode), pMultybyte,sizeof(pMultybyte) ,NULL,NULL);
+}
+void ConvertMultibyteToUnicode(char* pMultybyte, TCHAR *pUnicode) {
+	MultiByteToWideChar(CP_ACP, NULL, pMultybyte, -1, pUnicode, sizeof(pUnicode) / sizeof(TCHAR));
 
 }

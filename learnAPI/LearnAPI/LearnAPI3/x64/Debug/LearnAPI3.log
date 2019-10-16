@@ -1,0 +1,4 @@
+﻿  LearnAPI3.cpp
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI3\LearnAPI3.cpp(60,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI3\LearnAPI3.cpp(85,3): warning C4065: switch문에 'default'가 있으나 'case' 레이블이 없습니다.
+  LearnAPI3.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\x64\Debug\LearnAPI3.exe
