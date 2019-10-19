@@ -16,17 +16,21 @@ bool _isShow = false;
 
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
-TCHAR str[MAX_PATH] = { 0, };
-
+TCHAR str[4][MAX_PATH] = { L"궁서",L"굴림",L"돋움",L"08서울남산체 B" };
+TCHAR str1[MAX_PATH] = { 0, };
+int setfont = 0;
 bool mounseMOVE = false;
 int figure = 0;  // 0 직선, 1직사각형,2 원
 RECT pos = { 0,0,0,0 };
+
 COLORREF linecolor, brushcolor;
+
+HFONT SettingFont();
 
 //0: solid 1:DOT 2:DASH 3:NULL
 int lineshape = 0;
 //0: 채우기 1:격자 2:수직  3:투명
-int brushshape = 0;
+int brushshape = 3;
 COLORREF color[4] = { RGB(0, 0, 0),RGB(255, 0, 0),RGB(0, 0, 255),RGB(0, 255, 0) };
 int penstyle[4] = { PS_SOLID,PS_DOT,PS_DASH,PS_NULL };
 int brushstyle[4] = { BS_SOLID,HS_DIAGCROSS,HS_VERTICAL,BS_HOLLOW};
@@ -73,6 +77,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	return MessageLoop(hInstance);
 }
+int len;
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 
 	switch (uMsg)
@@ -84,10 +90,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 			break;
 		}
 		break;
+	case WM_CHAR:
+		
+		len = lstrlen(str1);
+		if (wParam != VK_ESCAPE && wParam != VK_BACK)   str1[len] = (TCHAR)wParam;// 문자열 끝에 저장
+		else if (len>0 && wParam == VK_BACK) str1[len-1] = 0;
+		str1[len + 1] = 0; //문자열 끝 뒤에 null지정
+		InvalidateRect(hWnd, NULL, true); //wm_paint발생을 위해 사용 다 안지우는 거 false
+		break;
+
 	case WM_COMMAND: {
 		int id = LOWORD(wParam);
 		switch (id)
 		{
+		case ID_32817:
+			setfont = 0;
+			break;
+		case ID_32818:
+			setfont = 1;
+			break;
+		case ID_32819:
+			setfont = 2;
+			break;
+		case ID_32820:
+			setfont = 3;
+			break;
 		case ID_32808:
 			figure = 0;
 			break;
@@ -178,7 +205,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 	case WM_PAINT: {
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hWnd, &ps);
+		HFONT font = SettingFont();//CreateFont(50, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, 0, L"궁서");
+		HFONT oldfont = (HFONT)SelectObject(hdc, font);
+		SetTextColor(hdc, color[linecolor]);		
+		SetBkColor(hdc, color[brushcolor]);
+		if (brushcolor == 0)
+			SetBkMode(hdc, TRANSPARENT);
+		else
+			SetBkMode(hdc, OPAQUE);
+		TextOut(hdc, 100, 100, str[setfont], lstrlen(str[setfont]));
 		
+		DrawText(hdc,str1, -1, &pos, DT_CENTER | DT_VCENTER);
+
+		SelectObject(hdc, oldfont);
+		DeleteObject(font);
+
 		HPEN pen = CreatePen(penstyle[lineshape], 1,color[linecolor]);
 		LOGBRUSH lplb;
 		HBRUSH brush;
@@ -270,6 +311,26 @@ int MessageLoop(HINSTANCE hInstace)
 
 void paintprint(HWND hWnd, int n)
 {
+
+}
+HFONT SettingFont() {
+	LOGFONT IFont;
+	IFont.lfHeight = 50;
+	IFont.lfWidth = 0;
+	IFont.lfEscapement = 0;
+	IFont.lfOrientation = 0;
+	IFont.lfWeight = 0;
+	IFont.lfItalic = 0;
+	IFont.lfUnderline = 0;
+	IFont.lfStrikeOut = 0;
+	IFont.lfCharSet = HANGUL_CHARSET;
+	IFont.lfOutPrecision = 0;
+	IFont.lfClipPrecision = 0;
+	IFont.lfQuality = 0;
+	IFont.lfPitchAndFamily = 0;
+	swprintf_s(IFont.lfFaceName, LF_FACESIZE, str[setfont]);
+
+	return CreateFontIndirect(&IFont);
 
 }
 

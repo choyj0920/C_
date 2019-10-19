@@ -1,0 +1,198 @@
+﻿// LearnAPI4.cpp : 애플리케이션에 대한 진입점을 정의합니다.
+//
+
+#include "framework.h"
+#include "LearnAPI4.h"
+
+#define MAX_LOADSTRING 100
+
+// 전역 변수:
+HINSTANCE _hInst;														//어플리케이션 핸들.
+HWND _hWnd;																//메인 윈도우 핸들.
+LPCWSTR _szWinClassName = L"MAKE_WINDOW4";
+
+WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
+WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+TCHAR str[MAX_PATH] = { 0, };
+RECT pos = { 100,0,400,0 };
+WNDCLASS wndClass;											//커스텀할 윈도우 구조체 변수.
+MSG msg;															//메시지 루프에서 사용할 변수
+
+// 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
+
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+void myRegisterClass(HINSTANCE hInstance);
+BOOL CreateShowWindow(HINSTANCE hInstance, int nCmdShow);
+int MessageLoop(HINSTANCE hInstace);
+
+
+INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow)
+{
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	// TODO: 여기에 코드를 입력합니다.
+	srand(time(0));
+	_hInst = hInstance;												//어플리케이션의 핸들을 저장.
+
+
+	//윈도우 구조체의 내용을 저장.
+	myRegisterClass(hInstance);
+	if (!CreateShowWindow(hInstance, nCmdShow)) {
+		return 0;
+	}
+
+	//MessageBox(NULL, L"윈도우 창 생성.", L"알림", MB_YESNO);   //윈도우 시작시 실행
+
+	//SetTimer(_hWnd, TIMER_TEST1, 250, NULL);
+
+
+
+
+	return MessageLoop(hInstance);
+}
+LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
+
+	switch (uMsg)
+	{
+	case WM_TIMER:
+		switch (wParam)
+		{
+		default:
+			break;
+		}
+		break;
+	case WM_KEYDOWN: //키보드 다운 
+		switch (wParam) {
+		case VK_LEFT:
+			pos.right -= 3;
+			break;
+		case 'A':
+		case 'a':
+			pos.left -= 8;
+			break;
+		case VK_RIGHT:
+			pos.right += 3;
+			break;
+		case 'D':
+		case 'd':
+			pos.left += 3;
+			break;
+		case VK_UP:
+			pos.bottom -= 3;
+			break;
+		case 'W':
+		case 'w':
+			pos.top -= 3;
+			break;
+		case VK_DOWN:
+			pos.bottom += 3;
+			break;
+		case 'S':
+		case 's':
+			pos.top += 3;
+			break;
+		}
+		if (pos.left < 0)	pos.left = 0;
+		else if (pos.left > 300) pos.left = 300;
+		if (pos.right < 300)  pos.right = 300;
+		else if (pos.right > 600) pos.right = 600;
+		if (pos.top < 0) pos.top = 0;
+		else if (pos.top > 600) pos.top = 600;
+		if (pos.bottom < 0) pos.bottom = 0;
+		else if (pos.bottom > 600) pos.bottom = 600;
+		InvalidateRect(hWnd, NULL, true); //wm_paint발생을 위해 사용 다 안지우는 거 false
+
+		break;
+
+	case WM_COMMAND: {
+		int id = LOWORD(wParam);
+		switch (id)
+		{
+		case IDM_EXIT:
+			DestroyWindow(hWnd);
+			break;
+		default:
+			break;
+		}
+		break;
+
+	}
+
+	case WM_PAINT: {
+		PAINTSTRUCT ps;
+		BITMAP bit;
+		HDC hdc = BeginPaint(hWnd, &ps);
+		HDC memdc = CreateCompatibleDC(hdc);
+		HBITMAP hbit = LoadBitmap(_hInst, MAKEINTRESOURCE(IDB_BITMAP5));
+		HBITMAP oldbit = (HBITMAP)SelectObject(memdc, hbit);
+		GetObject(hbit, sizeof(BITMAP), &bit);
+		BitBlt(hdc, pos.left- bit.bmWidth / 2, pos.top, bit.bmWidth/2, bit.bmHeight, memdc, 0, 0, SRCCOPY);
+		BitBlt(hdc, pos.right, pos.bottom, bit.bmWidth/2, bit.bmHeight, memdc, bit.bmWidth / 2, 0, SRCCOPY);
+
+		SelectObject(hdc, oldbit);
+		DeleteObject(hbit);
+		DeleteObject(memdc);
+		EndPaint(hWnd, &ps);
+		break;
+	}
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+
+	}
+	return (DefWindowProc(hWnd, uMsg, wParam, IParam));
+}
+
+
+//클래스 레지스터 등록 
+void myRegisterClass(HINSTANCE hInstance)
+{
+	wndClass.cbClsExtra = 0;
+	wndClass.cbWndExtra = 0;
+	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //하얀색
+	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wndClass.hIcon = LoadIcon(NULL, MAKEINTRESOURCE(IDI_LEARNAPI4));
+	wndClass.hInstance = _hInst; //hinstance;
+	wndClass.lpfnWndProc = WndProc;
+	wndClass.lpszClassName = _szWinClassName;
+	wndClass.lpszMenuName = MAKEINTRESOURCEW(IDC_LEARNAPI4);
+	wndClass.style = CS_HREDRAW | CS_VREDRAW;
+
+	RegisterClass(&wndClass);
+}
+
+//창 만들기, 
+BOOL CreateShowWindow(HINSTANCE hInstance, int nCmdShow)
+{
+	_hWnd = CreateWindow(_szWinClassName, _szWinClassName, WS_OVERLAPPEDWINDOW
+		, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, (HMENU)NULL, _hInst, NULL);
+	if (_hWnd == NULL)
+		return 0;
+	ShowWindow(_hWnd, nCmdShow);
+	return 1;
+
+
+}
+
+//메시지 루프
+int MessageLoop(HINSTANCE hInstace)
+{
+	while (GetMessage(&msg, NULL, 0, 0)) {
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	return (int)msg.wParam;
+}
+
+
+void paintprint(HWND hWnd, int n)
+{
+
+}

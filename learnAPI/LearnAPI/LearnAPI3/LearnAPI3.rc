@@ -86,6 +86,13 @@ BEGIN
                 MENUITEM "투명",                          ID_32813
             END
         END
+        POPUP "글 꼴 선택"
+        BEGIN
+            MENUITEM "궁서",                          ID_32817
+            MENUITEM "굴림",                          ID_32818
+            MENUITEM "돋움",                          ID_32819
+            MENUITEM "서울남산체",                       ID_32820
+        END
         MENUITEM SEPARATOR
         MENUITEM "끝내기(&X)",                     IDM_EXIT
     END
