@@ -27,9 +27,15 @@
     <ClInclude Include="LearnAPI4.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="DrawImage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI4.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawImage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

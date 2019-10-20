@@ -151,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DrawImage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LearnAPI4.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DrawImage.cpp" />
     <ClCompile Include="LearnAPI4.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -52,6 +52,17 @@ BEGIN
     BEGIN
         MENUITEM "정보(&A)...",                   IDM_ABOUT
     END
+    POPUP "이미지"
+    BEGIN
+        POPUP "절단"
+        BEGIN
+            MENUITEM "2X2",                         ID_32771
+            MENUITEM "3X3",                         ID_32772
+            MENUITEM "3X4",                         ID_32773
+            MENUITEM "4X3",                         ID_32774
+            MENUITEM "4X4",                         ID_32775
+        END
+    END
 END
 
 
