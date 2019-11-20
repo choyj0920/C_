@@ -168,9 +168,11 @@
     <Image Include="asdf.bmp" />
     <Image Include="bitmap.bmp" />
     <Image Include="bitmap1.bmp" />
+    <Image Include="bitmap6.bmp" />
     <Image Include="bmp.bmp" />
     <Image Include="LearnAPI4.ico" />
     <Image Include="small.ico" />
+    <Image Include="test.bmp" />
     <Image Include="스케치.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

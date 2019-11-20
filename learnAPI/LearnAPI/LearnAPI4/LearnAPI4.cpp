@@ -12,23 +12,23 @@ LPCWSTR _szWinClassName = L"MAKE_WINDOW4";
 int modeset = 0;
 
 
-tagPOINT set[4][4] = { 0, };
-int mo_x = 1, mo_y = 1;
-tagPOINT* move = &set[mo_x][mo_y];
-
-tagPOINT mode[] = { {2,2},{3,3},{3,4},{4,3},{4,4} };
-tagPOINT* modes = &mode[0];
-void set__() {
-	mo_x = modes->x -1;
-	mo_y	= modes->y-1;
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			set[i][j] = { i,j };
-		}
-	}
-	move = &set[mo_x][mo_y];
-}
-
+//tagPOINT set[4][4] = { 0, };
+//int mo_x = 1, mo_y = 1;
+//tagPOINT* move = &set[mo_x][mo_y];
+//
+//tagPOINT mode[] = { {2,2},{3,3},{3,4},{4,3},{4,4} };
+//tagPOINT* modes = &mode[0];
+//void set__() {
+//	mo_x = modes->x -1;
+//	mo_y	= modes->y-1;
+//	for (int i = 0; i < 4; i++) {
+//		for (int j = 0; j < 4; j++) {
+//			set[i][j] = { i,j };
+//		}
+//	}
+//	move = &set[mo_x][mo_y];
+//}
+//
 
 
 DrawImage draw;
@@ -89,13 +89,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 
 	switch (uMsg)
 	{
-	case WM_TIMER:
-		switch (wParam)
-		{
-		default:
-			break;
-		}
-		break;
+	
 	case WM_KEYDOWN: //키보드 다운 
 		switch (wParam) {
 		/*case VK_LEFT:
@@ -127,13 +121,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 			pos.top += 3;
 			break;*/
 		case VK_LEFT:
-			if (mo_x > 0) {
+			/*if (mo_x > 0) {
 				tagPOINT temp = set[mo_x][mo_y];
 				set[mo_x][mo_y] = set[mo_x - 1][mo_y];
 				set[mo_x - 1][mo_y] = temp;
 				mo_x--;
 
-			}
+			}*/
 			break;
 		}
 		/*
@@ -215,12 +209,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM IParam) {
 		DeleteObject(hbit);
 		*/
 		HDC memdc = CreateCompatibleDC(hdc);
-		draw.set_initial(_hInst, hWnd, hdc, memdc);
+		/*draw.set_initial(_hInst, hWnd, hdc, memdc);
 		draw.draw_bitblt(0, 0, MAKEINTRESOURCE(IDB_BITMAP5));
 		draw.draw_strecthblt(400, 0, 200, 200, MAKEINTRESOURCE(IDB_BITMAP5));
 		draw.draw_divied_strech(600, 0, mode[modeset][0], mode[modeset][1], MAKEINTRESOURCE(IDB_BITMAP5));
-		TCHAR str[MAX_PATH]={L"bitmap.bmp"};
-		draw.image_draw(900, 0, 200, 200,str);
+		TCHAR str[MAX_PATH]={L"bitmap.bmp"};*/
+		//draw.image_draw(900, 0, 200, 200,str);
+		
+		draw.set_initial(_hInst, hWnd, hdc, memdc);
+		draw.image_draw(0, 0, 200, 200, L"test.bmp");
+		draw.image_draw2(0, 0, 400, 400,L"bitmap.bmp");
 		DeleteObject(memdc);
 
 		EndPaint(hWnd, &ps);
@@ -281,6 +279,7 @@ void DrawImageToBMP(HDC hdc, int sx, int sy, TCHAR* lpmbpName)
 	BITMAP bit;
 	HDC memdc = CreateCompatibleDC(hdc);
 	HBITMAP hbit = LoadBitmap(_hInst,lpmbpName);
+	//HBITMAP hbit = (HBITMAP)LoadImage(_hInst,L"test.bmp",IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
 	HBITMAP oldbit = (HBITMAP)SelectObject(memdc, hbit);
 	GetObject(hbit, sizeof(BITMAP), &bit);
 	//BitBlt(hdc, sx,sy, bit.bmWidth , bit.bmHeight, memdc, 0, 0, SRCCOPY);

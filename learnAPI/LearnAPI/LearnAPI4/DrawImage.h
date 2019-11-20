@@ -21,10 +21,11 @@ public:
 	void draw_strecthblt(int x, int y, int xsize, int ysize,TCHAR* lpmbpName);
 	
 	//strechblt를 이용 하여 조각출력하는함수
-	void draw_divied_strech(int x,int y,int wx,int wy, TCHAR* lpmbpName);
+	void draw_divied_strech(int x,int y,int wx,int wy,const TCHAR* imagefilename);
 
-	void draw_divied_strech(int x,int y,int wx,int wy, TCHAR* lpmbpName);
+	
 	//파일에서 읽기
-	void image_draw(int x, int y, int xsize,int ysize,TCHAR* imagefilename);
+	void image_draw(int x, int y, int xsize,int ysize,const TCHAR* imagefilename);
+	void image_draw2(int x, int y, int xsize,int ysize,const TCHAR* imagefilename);
 };
 

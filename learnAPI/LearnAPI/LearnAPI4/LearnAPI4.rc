@@ -160,6 +160,10 @@ IDB_BITMAP4             BITMAP                  "bmp.bmp"
 
 IDB_BITMAP5             BITMAP                  "bitmap.bmp"
 
+IDB_BITMAP6             BITMAP                  "bitmap6.bmp"
+
+IDB_BITMAP7             BITMAP                  "test.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -15,3 +15,5 @@
 #include <cstdlib>
 #include <ctime>
 #include <tchar.h>
+
+#pragma comment(lib, "Msimg32.lib")

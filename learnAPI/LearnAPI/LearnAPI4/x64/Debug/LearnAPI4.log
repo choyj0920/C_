@@ -1,7 +1,6 @@
 ﻿  DrawImage.cpp
   LearnAPI4.cpp
-C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI4\LearnAPI4.cpp(47,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI4\LearnAPI4.cpp(75,3): warning C4065: switch문에 'default'가 있으나 'case' 레이블이 없습니다.
   코드를 생성하고 있습니다...
-C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI4\LearnAPI4.cpp(159,10): warning C4101: 'bit' :참조되지 않은 지역 변수입니다.
-  LearnAPI4.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\x64\Debug\LearnAPI4.exe
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI4\LearnAPI4.cpp(69,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+DrawImage.obj : error LNK2019: __imp_AlphaBlend 외부 기호(참조 위치: "public: void __cdecl DrawImage::image_draw(int,int,int,int,wchar_t const *)" (?image_draw@DrawImage@@QEAAXHHHHPEB_W@Z) 함수)에서 확인하지 못했습니다.
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\x64\Debug\LearnAPI4.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.

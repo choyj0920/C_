@@ -44,9 +44,11 @@ void DrawImage::draw_strecthblt(int x, int y,int xsize,int ysize, TCHAR* lpmbpNa
 	DeleteObject(hbit);
 }
 
-void DrawImage::draw_divied_strech(int x, int y, int wx, int wy, TCHAR* lpmbpName)
+void DrawImage::draw_divied_strech(int x, int y, int wx, int wy,const TCHAR* imagefilename)
 {
-	HBITMAP hbit = LoadBitmap(_hInst, lpmbpName);
+	//HBITMAP hbit = LoadBitmap(_hInst, lpmbpName);
+	HBITMAP hbit = (HBITMAP)LoadImage(NULL, imagefilename, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+
 	HBITMAP oldbit = (HBITMAP)SelectObject(_memDC, hbit);
 	BITMAP bit;
 	GetObject(hbit, sizeof(BITMAP), &bit);
@@ -64,13 +66,34 @@ void DrawImage::draw_divied_strech(int x, int y, int wx, int wy, TCHAR* lpmbpNam
 
 }
 
-void DrawImage::image_draw(int x, int y, int xsize, int ysize, TCHAR* imagefilename)
+void DrawImage::image_draw(int x, int y, int xsize, int ysize,const  TCHAR* imagefilename)
 {
 	HBITMAP hbit = (HBITMAP)LoadImage(NULL,imagefilename,IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
 	HBITMAP oldbit = (HBITMAP)SelectObject(_memDC, hbit);
 	BITMAP bit;
 	GetObject(hbit, sizeof(BITMAP), &bit);
-	StretchBlt(_onewrDC, x, y, xsize, ysize, _memDC, 0, 0, bit.bmWidth, bit.bmHeight, SRCCOPY);
+	//StretchBlt(_onewrDC, x, y, xsize, ysize, _memDC, 0, 0, bit.bmWidth, bit.bmHeight, SRCCOPY);
+	BitBlt(_onewrDC, x, y, xsize, ysize, _memDC, 0, 0, SRCCOPY);
+
+	BLENDFUNCTION bf;
+	memset(&bf,0, sizeof(bf));
+	bf.AlphaFormat = AC_SRC_OVER;
+	bf.SourceConstantAlpha = 100;
+	AlphaBlend(_onewrDC, x, y, bit.bmWidth, bit.bmHeight,_memDC,0,0, bit.bmWidth, bit.bmHeight, bf);
+
+	SelectObject(_memDC, oldbit);
+	DeleteObject(hbit);
+}
+
+void DrawImage::image_draw2(int x, int y, int xsize, int ysize,const TCHAR* imagefilename)
+{
+	HBITMAP hbit = (HBITMAP)LoadImage(NULL, imagefilename, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	HBITMAP oldbit = (HBITMAP)SelectObject(_memDC, hbit);
+	BITMAP bit;
+	GetObject(hbit, sizeof(BITMAP), &bit);
+	BitBlt(_onewrDC, x, y, xsize, ysize, _memDC, 0, 0, SRCCOPY);
+	//StretchBlt(_onewrDC, x, y, xsize, ysize, _memDC, 0, 0, bit.bmWidth, bit.bmHeight, SRCCOPY);
 	SelectObject(_onewrDC, oldbit);
+	
 	DeleteObject(hbit);
 }
