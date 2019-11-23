@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearnAPI7_1103_HW", "LearnA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearnAPI8", "LearnAPI8\LearnAPI8.vcxproj", "{CC9A2987-3257-4E21-A00F-005A9A367EA6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearnAPI9-dx", "LearnAPI9-dx\LearnAPI9-dx.vcxproj", "{5531CCD9-30B7-4290-A105-6557E7FAC258}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -102,13 +104,19 @@ Global
 		{300A6521-7D6E-4998-966D-FA8B815336EB}.Release|x86.ActiveCfg = Release|Win32
 		{300A6521-7D6E-4998-966D-FA8B815336EB}.Release|x86.Build.0 = Release|Win32
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Debug|x64.ActiveCfg = Debug|x64
-		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Debug|x64.Build.0 = Debug|x64
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Debug|x86.ActiveCfg = Debug|Win32
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Debug|x86.Build.0 = Debug|Win32
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Release|x64.ActiveCfg = Release|x64
-		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Release|x64.Build.0 = Release|x64
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Release|x86.ActiveCfg = Release|Win32
 		{CC9A2987-3257-4E21-A00F-005A9A367EA6}.Release|x86.Build.0 = Release|Win32
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Debug|x64.ActiveCfg = Debug|x64
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Debug|x64.Build.0 = Debug|x64
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Debug|x86.ActiveCfg = Debug|Win32
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Debug|x86.Build.0 = Debug|Win32
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Release|x64.ActiveCfg = Release|x64
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Release|x64.Build.0 = Release|x64
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Release|x86.ActiveCfg = Release|Win32
+		{5531CCD9-30B7-4290-A105-6557E7FAC258}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
