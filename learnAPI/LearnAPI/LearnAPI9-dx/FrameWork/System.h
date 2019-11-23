@@ -11,15 +11,18 @@ private:
 	HWND m_hWnd;
 
 	bool isFullScreen;
+	// 창 끄는 함수
 	void ShutdownWindows();
+	// 윈도우 클래스 선언 및 창 만들어주는 함수
 	void InitializeWindows(HINSTANCE hInst, bool isFull, int& screenW, int& screenH);
 public:
 	System();
 	~System();
-	static TCHAR _szFullPathName[MAX_PATH];
+	// 그래픽, 키입력 함수 실행
 	bool Frame();
-
+	//메시지 루프 함수
 	int Run();
+	// 클래스 멤버 -할당 해제함수
 	void Shutdown();
 	LRESULT	 AppProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam); //실제 프로시저
 
@@ -27,6 +30,7 @@ public:
 	//사용할 객체들
 	GraphicsClass* graphics;
 	InputClass* InputC;
+	//외부에서 윈도우클래스 초기화 함수
 	bool Initialize(HINSTANCE hinstance, bool isFull = true,int =800,int =600);
 };
 

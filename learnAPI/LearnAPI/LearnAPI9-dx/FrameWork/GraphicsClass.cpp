@@ -52,7 +52,7 @@ bool GraphicsClass::Initialize(int w, int h, HWND hwnd, bool isFull)
 	this->hwnd = hwnd;
 	if (imgdraw == NULL)
 		imgdraw = new ImageDraw;
-
+	
 	return true;
 }
 
