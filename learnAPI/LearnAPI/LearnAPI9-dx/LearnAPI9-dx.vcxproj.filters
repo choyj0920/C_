@@ -39,6 +39,9 @@
     <ClInclude Include="FrameWork\InputClass.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="D3D\D3DClass.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -54,6 +57,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="FrameWork\InputClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D\D3DClass.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

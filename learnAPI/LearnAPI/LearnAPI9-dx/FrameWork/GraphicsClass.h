@@ -7,6 +7,7 @@ private:
 	bool _Vsync_enable;
 	float _SDepth;
 	float _SNear;
+	
 	int x;
 	int y;
 	bool isFull;

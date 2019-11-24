@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="D3D\D3DClass.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FrameWork\GraphicsClass.h" />
     <ClInclude Include="FrameWork\ImageDraw.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="D3D\D3DClass.cpp" />
     <ClCompile Include="FrameWork\GraphicsClass.cpp" />
     <ClCompile Include="FrameWork\ImageDraw.cpp" />
     <ClCompile Include="FrameWork\InputClass.cpp" />
