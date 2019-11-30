@@ -1,30 +1,33 @@
-﻿
-#pragma once
+﻿#pragma once
 
-//#define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
-// Windows 헤더 파일
-#include <windows.h>
-// C 런타임 헤더 파일입니다.
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+// 제공 디파인을 위한...
+#define WIN32_LEAN_AND_MEAN
+
+// 필요 생성 디파인들.
+#define MAX_KEYS		256
+
+
+
+// 헤더들 include.
+#include <stdio.h>
+#include <Windows.h>
 #include <tchar.h>
-#include "LearnAPI9-dx.h"
-#define MAX_LOADSTRING 100
+#include <iostream>
+
+#include <d3dcommon.h>
+#include <d3d11.h>
+#include <DirectXMath.h>
+#include <DirectXPackedVector.h>
 
 
+// 필요 네임스페이스 using들.
+using namespace std;
+using namespace DirectX;
 
-#define IDM_START_PRINT 1000
-#define ID_CON_BUTTON_1 10001
-#define ID_CON_BUTTON_2 10002
-#define ID_CON_BUTTON_3 10003
-#define ID_CON_BUTTON_4 10004
-#define RAND_SPEED_TIMER 2000
-#define RUN_TIMER 2001
-#define DELETE_TIMER 2002
+
+#include "./FrameWork/GraphicsClass.h"
+#include "./FrameWork/InputClass.h"
+
 
 // 싱클톤 클래스
 template < typename T >
@@ -53,9 +56,3 @@ private:
 	static T* _Instance;
 };
 template <typename T> T* Singleton<T>::_Instance = NULL;
-
-#include "./FrameWork/GraphicsClass.h"
-#include ".\FrameWork\InputClass.h"
-
-#include "./FrameWork/System.h"
-
