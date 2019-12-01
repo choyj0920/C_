@@ -1,3 +1,4 @@
+#pragma once
 
 class D3DClass {
 	bool _Vsync_enabled;

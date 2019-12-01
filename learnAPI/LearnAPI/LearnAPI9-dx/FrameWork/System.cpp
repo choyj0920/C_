@@ -1,6 +1,4 @@
 #include "System.h"
-
-
 //=================================================================================================
 
 System::System()
@@ -220,7 +218,3 @@ bool System::Initialize(HINSTANCE hinstance, bool isFull, int screenW, int scree
 	return true;
 	
 }
-
-
-
-

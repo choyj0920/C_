@@ -1,6 +1,6 @@
 #pragma once
-#include <Windows.h>
-#include "ImageDraw.h"
+#include "../D3D/D3DClass.h"
+#include "../D3D/Camera.h"
 class GraphicsClass
 {
 private:
@@ -8,22 +8,21 @@ private:
 	float _SDepth;
 	float _SNear;
 	
-	int x;
-	int y;
-	bool isFull;
-	HWND hwnd;
-	bool Render();
-	ImageDraw* imgdraw = NULL;
+	D3DClass* _D3DC;
+	Camera* _Camera;
+	
 public:
 	GraphicsClass();
 	GraphicsClass(const GraphicsClass& copy);
 	~GraphicsClass();
 
+
 	bool Initialize(int x, int y, HWND, bool);
 	void Release();
 	bool Frame();
 
-
+private:
+	bool Render();
 
 };
 

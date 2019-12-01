@@ -1,0 +1,3 @@
+﻿  GraphicsClass.cpp
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI9-dx\FrameWork\GraphicsClass.cpp(49,22): warning C4316: 'D3DClass': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  LearnAPI9-dx.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\Debug\LearnAPI9-dx.exe

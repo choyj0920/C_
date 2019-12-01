@@ -114,12 +114,12 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="D3D\Camera.h" />
+    <ClInclude Include="D3D\ColorShader.h" />
     <ClInclude Include="D3D\D3DClass.h" />
+    <ClInclude Include="D3D\D3DUtilClass.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FrameWork\GraphicsClass.h" />
-    <ClInclude Include="FrameWork\ImageDraw.h" />
     <ClInclude Include="FrameWork\InputClass.h" />
     <ClInclude Include="FrameWork\System.h" />
     <ClInclude Include="LearnAPI9-dx.h" />
@@ -162,11 +164,20 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D3D\D3DClass.cpp" />
-    <ClCompile Include="FrameWork\GraphicsClass.cpp" />
-    <ClCompile Include="FrameWork\ImageDraw.cpp" />
-    <ClCompile Include="FrameWork\InputClass.cpp" />
-    <ClCompile Include="FrameWork\System.cpp" />
+    <ClCompile Include="D3D\Camera.cpp" />
+    <ClCompile Include="D3D\ColorShader.cpp" />
+    <ClCompile Include="D3D\D3DClass.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="FrameWork\GraphicsClass.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="FrameWork\InputClass.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="FrameWork\System.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +186,21 @@
   <ItemGroup>
     <Image Include="LearnAPI9-dx.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D3D\Shader\Color.vs">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PS</EntryPointName>
+      <DisableOptimizations Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DisableOptimizations>
+      <EnableDebuggingInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableDebuggingInformation>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D3D\Shader\Color.ps" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

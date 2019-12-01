@@ -1,8 +1,9 @@
 ﻿#pragma once
+#pragma comment(lib, "d3d11.lib")//이거안넣음녀 오류
+#pragma comment(lib, "d3dcompiler.lib")//이거안넣음녀 오류
 
 // 제공 디파인을 위한...
 #define WIN32_LEAN_AND_MEAN
-
 // 필요 생성 디파인들.
 #define MAX_KEYS		256
 
@@ -13,11 +14,13 @@
 #include <Windows.h>
 #include <tchar.h>
 #include <iostream>
-
+#include <fstream>
 #include <d3dcommon.h>
 #include <d3d11.h>
 #include <DirectXMath.h>
+
 #include <DirectXPackedVector.h>
+#include<d3dcompiler.h>
 
 
 // 필요 네임스페이스 using들.
@@ -30,6 +33,7 @@ using namespace DirectX;
 
 
 // 싱클톤 클래스
+
 template < typename T >
 class Singleton
 {
@@ -56,3 +60,4 @@ private:
 	static T* _Instance;
 };
 template <typename T> T* Singleton<T>::_Instance = NULL;
+

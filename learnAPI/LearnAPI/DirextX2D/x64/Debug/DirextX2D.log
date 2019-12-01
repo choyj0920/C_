@@ -1,0 +1,5 @@
+﻿  D3DClass.cpp
+  Main.cpp
+  코드를 생성하고 있습니다...
+C:\Users\choyj\Downloads\DirextX2D_D3D초기화\DirextX2D\D3D\D3DClass.cpp(350): warning C4715: 'D3DClass::CreateRenderTargetV': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  DirextX2D.vcxproj -> C:\Users\choyj\Downloads\DirextX2D_D3D초기화\x64\Debug\DirextX2D.exe

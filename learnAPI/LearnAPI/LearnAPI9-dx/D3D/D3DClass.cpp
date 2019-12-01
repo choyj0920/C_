@@ -347,6 +347,8 @@ bool D3DClass::CreateRenderTargetV()
 	}
 	backBuffer->Release();
 	backBuffer = NULL;
+
+	return true;
 }
 
 

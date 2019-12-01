@@ -31,6 +31,6 @@ public:
 	GraphicsClass* graphics;
 	InputClass* InputC;
 	//외부에서 윈도우클래스 초기화 함수
-	bool Initialize(HINSTANCE hinstance, bool isFull = true,int =800,int =600);
+	bool Initialize(HINSTANCE hinstance, bool isFull = false,int =800,int =600);
 };
 

@@ -1,37 +1,35 @@
-#include "GraphicsClass.h"
+#include "../framework.h"
 
 bool GraphicsClass::Render()
 {
-	PAINTSTRUCT ps;
 
-	/** 더블버퍼링 시작처리입니다. **/
-	static HDC hdc, MemDC;
-	static HBITMAP BackBit, oldBackBit;
-	static RECT bufferRT;
-	MemDC = BeginPaint(hwnd, &ps);
+	bool result = false;
 
-	GetClientRect(hwnd, &bufferRT);
-	hdc = CreateCompatibleDC(MemDC);
-	BackBit = CreateCompatibleBitmap(MemDC, bufferRT.right, bufferRT.bottom);
-	oldBackBit = (HBITMAP)SelectObject(hdc, BackBit);
-	PatBlt(hdc, 0, 0, bufferRT.right, bufferRT.bottom, WHITENESS);
+	//카메라의 위치를 기반으로 뷰 행렬을생성합낟.
+	//_Camera->Render();
 
-	// TODO: 여기에 그리기 코드를 추가합니다.
+	// 카메라 및 d3d객체에서 세계, 뷰 및 투영 행렬 가져오기.
+	//_Camera->GetViewMatrix();
+
+	// 씬 그리기를 시작하기 위해 버퍼의 내용을 지웁니다.
+	_D3DC->BeginScene(0.3f, 0.3f, 0.3f, 1.0f);
 
 
-	/** 더블버퍼링 끝처리 입니다. **/
-	GetClientRect(hwnd, &bufferRT);
-	BitBlt(MemDC, 0, 0, bufferRT.right, bufferRT.bottom, hdc, 0, 0, SRCCOPY);
-	SelectObject(hdc, oldBackBit);
-	DeleteObject(BackBit);
-	DeleteDC(hdc);
-	EndPaint(hwnd, &ps);
+
+	// 버퍼에 그려진 씬을 화면에 표시합니다.
+	_D3DC->EndScene();
 
 	return true;
+
+	
 }
 
 GraphicsClass::GraphicsClass()
 {
+	_SDepth = 1000.0f;
+	_SNear = 0.1f;
+	_D3DC = NULL;
+	_Vsync_enable = false;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass& copy) :_Vsync_enable(copy._Vsync_enable), _SDepth(copy._SDepth), _SNear(copy._SNear)
@@ -43,34 +41,54 @@ GraphicsClass::~GraphicsClass()
 {
 }
 
-bool GraphicsClass::Initialize(int w, int h, HWND hwnd, bool isFull)
+bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullScreen)
 {
-	//출력 위치, 전체화면, 이니셜 라이저
-	this->x = w;
-	this->y = h;
-	this->isFull = isFull;
-	this->hwnd = hwnd;
-	if (imgdraw == NULL)
-		imgdraw = new ImageDraw;
-	
+	bool result = false;
+
+	// Direct3D 객체를 생성합니다.
+	_D3DC = new D3DClass;
+	if (!_D3DC)
+	{
+		return false;
+	}
+
+	// Direct3D 객체를 초기화합니다.
+	result = _D3DC->Initialize(screenW, screenH, _Vsync_enable, hWnd, IsFullScreen, _SDepth, _SNear);
+	if (!result)
+	{
+		MessageBox(hWnd, _T("Could not initialize Direct3D"), _T("Error"), MB_OK);
+		return false;
+	}
+
 	return true;
+
 }
 
 void GraphicsClass::Release()
 {
-	if (imgdraw)
-		delete imgdraw;
+	if (_Camera) {
+		delete _Camera;
+		_Camera = NULL;
+	}
+	// D3D 객체를 해제합니다.
+	if (_D3DC)
+	{
+		_D3DC->Release();
+		delete _D3DC;
+		_D3DC = NULL;
+	}
 }
 
 bool GraphicsClass::Frame()
 {
-	bool result;
-	result = Render();
-	if (!result) {
+	bool result = false;
 
+	// 그래픽 렌더링을 수행합니다.
+	result = Render();
+	if (!result)
+	{
 		return false;
 	}
-	return true;
 
-	
+	return true;
 }
