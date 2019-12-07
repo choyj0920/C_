@@ -60,6 +60,12 @@
     <ClInclude Include="D3D\ColorShader.h">
       <Filter>소스 파일\D3D</Filter>
     </ClInclude>
+    <ClInclude Include="D3D\ModelTraingle.h">
+      <Filter>소스 파일\D3D</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D\ModelRect.h">
+      <Filter>소스 파일\D3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -81,6 +87,12 @@
       <Filter>소스 파일\D3D</Filter>
     </ClCompile>
     <ClCompile Include="D3D\ColorShader.cpp">
+      <Filter>소스 파일\D3D</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D\ModelTraingle.cpp">
+      <Filter>소스 파일\D3D</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D\ModelRect.cpp">
       <Filter>소스 파일\D3D</Filter>
     </ClCompile>
   </ItemGroup>

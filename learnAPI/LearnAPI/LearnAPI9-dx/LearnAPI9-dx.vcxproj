@@ -155,6 +155,8 @@
     <ClInclude Include="D3D\ColorShader.h" />
     <ClInclude Include="D3D\D3DClass.h" />
     <ClInclude Include="D3D\D3DUtilClass.h" />
+    <ClInclude Include="D3D\ModelRect.h" />
+    <ClInclude Include="D3D\ModelTraingle.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FrameWork\GraphicsClass.h" />
     <ClInclude Include="FrameWork\InputClass.h" />
@@ -169,6 +171,8 @@
     <ClCompile Include="D3D\D3DClass.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="D3D\ModelRect.cpp" />
+    <ClCompile Include="D3D\ModelTraingle.cpp" />
     <ClCompile Include="FrameWork\GraphicsClass.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>

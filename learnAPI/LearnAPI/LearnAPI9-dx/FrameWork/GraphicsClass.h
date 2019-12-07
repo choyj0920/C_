@@ -1,6 +1,5 @@
 #pragma once
-#include "../D3D/D3DClass.h"
-#include "../D3D/Camera.h"
+
 class GraphicsClass
 {
 private:
@@ -10,7 +9,9 @@ private:
 	
 	D3DClass* _D3DC;
 	Camera* _Camera;
-	
+	ColorShader* _ShaderClass;
+	//ModelTraingle* _Model;
+	ModelRect* _Model;
 public:
 	GraphicsClass();
 	GraphicsClass(const GraphicsClass& copy);

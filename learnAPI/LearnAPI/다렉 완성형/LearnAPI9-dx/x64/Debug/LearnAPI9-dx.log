@@ -1,0 +1,5 @@
+﻿  InputClass.cpp
+  System.cpp
+  코드를 생성하고 있습니다...
+D3DClass.obj : error LNK2019: D3D11CreateDevice 외부 기호(참조 위치: "private: bool __cdecl D3DClass::CreateDeviceNContext(void)" (?CreateDeviceNContext@D3DClass@@AEAA_NXZ) 함수)에서 확인하지 못했습니다.
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\x64\Debug\LearnAPI9-dx.exe : fatal error LNK1120: 1개의 확인할 수 없는 외부 참조입니다.
