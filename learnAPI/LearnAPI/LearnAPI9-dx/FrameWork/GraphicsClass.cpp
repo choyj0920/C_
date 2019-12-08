@@ -86,9 +86,10 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 		return false;
 
 	// Set the initial position of the camera.
-	_Camera->SetPosition(0.0f, 0.0f, -10.0f);
+	_Camera->SetPosition(-3.0f, 3.0f, -10.0f);
+	_Camera->SetRotation(30.0f, 10.0f, 0.0f);
 	// Create the model object.
-	_Model = new ModelRect;
+	_Model = new ModelCube;
 	if (!_Model)
 		return false;
 

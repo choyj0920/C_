@@ -11,7 +11,8 @@ private:
 	Camera* _Camera;
 	ColorShader* _ShaderClass;
 	//ModelTraingle* _Model;
-	ModelRect* _Model;
+	//ModelRect* _Model;
+	ModelCube* _Model;
 public:
 	GraphicsClass();
 	GraphicsClass(const GraphicsClass& copy);

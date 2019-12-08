@@ -110,11 +110,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D3D\;D3D\Model\;FrameWork\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,6 +158,8 @@
     <ClInclude Include="D3D\D3DUtilClass.h" />
     <ClInclude Include="D3D\ModelRect.h" />
     <ClInclude Include="D3D\ModelTraingle.h" />
+    <ClInclude Include="D3D\Model\ModelCube.h" />
+    <ClInclude Include="DirectXTex.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FrameWork\GraphicsClass.h" />
     <ClInclude Include="FrameWork\InputClass.h" />
@@ -164,6 +167,7 @@
     <ClInclude Include="LearnAPI9-dx.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextureClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D3D\Camera.cpp" />
@@ -173,6 +177,7 @@
     </ClCompile>
     <ClCompile Include="D3D\ModelRect.cpp" />
     <ClCompile Include="D3D\ModelTraingle.cpp" />
+    <ClCompile Include="D3D\Model\ModelCube.cpp" />
     <ClCompile Include="FrameWork\GraphicsClass.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -183,6 +188,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
+    <ClCompile Include="TextureClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnAPI9-dx.rc" />

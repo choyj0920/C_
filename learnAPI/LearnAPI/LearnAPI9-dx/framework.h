@@ -16,6 +16,7 @@
 #include <iostream>
 #include <fstream>
 #include <d3dcommon.h>
+#include "DirectXTex.h"
 #include <d3d11.h>
 #include <DirectXMath.h>
 
@@ -26,15 +27,17 @@
 // 필요 네임스페이스 using들.
 using namespace std;
 using namespace DirectX;
+#include "TextureClass.h"
 
+#include "ModelCube.h"
 #include "D3D/ModelTraingle.h" 
 #include "D3D/ModelRect.h"
 #include "D3D/ColorShader.h" 
 #include "D3D/Camera.h"
 #include "D3D/D3DClass.h"
 
-#include "./FrameWork/GraphicsClass.h"
-#include "./FrameWork/InputClass.h"
+#include "GraphicsClass.h"
+#include "InputClass.h"
 
 // 싱클톤 클래스
 

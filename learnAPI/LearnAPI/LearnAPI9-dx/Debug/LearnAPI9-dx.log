@@ -1,2 +1,13 @@
-﻿  ModelRect.cpp
+﻿  Camera.cpp
+  ColorShader.cpp
+  D3DClass.cpp
+  ModelRect.cpp
+  ModelTraingle.cpp
+  ModelCube.cpp
+  GraphicsClass.cpp
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI9-dx\FrameWork\GraphicsClass.cpp(70,22): warning C4316: 'D3DClass': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  System.cpp
+  LearnAPI9-dx.cpp
+  코드를 생성하고 있습니다...
+C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\LearnAPI9-dx\FrameWork\GraphicsClass.cpp(84,22): warning C4316: 'Camera': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
   LearnAPI9-dx.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\Debug\LearnAPI9-dx.exe
