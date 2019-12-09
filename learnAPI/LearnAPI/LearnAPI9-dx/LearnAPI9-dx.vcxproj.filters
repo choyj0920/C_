@@ -72,9 +72,6 @@
     <ClInclude Include="DirectXTex.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="TextureClass.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -106,9 +103,6 @@
     </ClCompile>
     <ClCompile Include="D3D\Model\ModelCube.cpp">
       <Filter>소스 파일\D3D\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureClass.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

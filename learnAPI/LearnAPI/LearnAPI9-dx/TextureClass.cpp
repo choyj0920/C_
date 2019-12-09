@@ -45,7 +45,7 @@ bool TextureClass::Initialize(ID3D11Device* device, const TCHAR* filename)
 
 	TCHAR ext[_MAX_EXT];
 	TCHAR name[_MAX_EXT];
-	_wsplitpath(filename, 0, 0, name, ext);
+	//_wsplitpath(filename, 0, 0, name, ext);
 
 	result = CreateShaderResourceViewFromFile(device, filename, ext);
 	if (FAILED(result))
