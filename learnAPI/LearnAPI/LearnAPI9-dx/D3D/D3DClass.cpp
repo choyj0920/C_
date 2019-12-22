@@ -14,6 +14,7 @@ D3DClass::D3DClass()
 	_DepthStencilState = NULL;
 	_DepthStencilView = NULL;
 	_RasterState = NULL;
+	_DepthDisabledStencilState = NULL;
 
 	_mEnable4xMsaa = false;
 }
@@ -86,7 +87,12 @@ void D3DClass::Release()
 		_RasterState->Release();
 		_RasterState = NULL;
 	}
-
+	if (_DepthDisabledStencilState != NULL)
+	{
+		_DepthDisabledStencilState->Release();
+		_DepthDisabledStencilState = NULL;
+	}
+	
 	if (_DepthStencilView != NULL)
 	{
 		_DepthStencilView->Release();
@@ -189,6 +195,17 @@ void D3DClass::GetWorldMatrix(XMMATRIX& mat)
 void D3DClass::GetOrthoMatrix(XMMATRIX& mat)
 {
 	mat = _OrthoMatrix;
+}
+
+void D3DClass::TurnZBufferOn()
+{
+	_DeviceContext->OMSetDepthStencilState(_DepthStencilState, 1);
+}
+
+void D3DClass::TurnZBufferOff()
+{
+	_DeviceContext->OMSetDepthStencilState(_DepthDisabledStencilState, 1);
+
 }
 
 bool D3DClass::CreateDeviceNContext()
@@ -439,6 +456,34 @@ bool D3DClass::CreatedepthNStencil(int screenW, int screenH, UINT m4xMsaaQuality
 	}
 
 	return true;
+
+	//매개변수를 설정하기 전에 두 번째 깊이 스템실 상태를 지우십시오
+	ZeroMemory(&depthStencilDesc, sizeof(depthStencilDesc));
+
+	//이제 2D렌더링을 위한 z버퍼를 끄는 두번 째 깊이 스텐실 상태를 만듭니다.
+	//유일한 차이점은 DepthEnable False로 설정되고
+	//다른 도든 매개변수는 다른 깊이 스텐실 상태와 동일하다는 점입니다.
+	depthStencilDesc.DepthEnable = false;
+	depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	depthStencilDesc.DepthFunc = D3D11_COMPARISON_LESS;
+	depthStencilDesc.StencilEnable = true;
+	depthStencilDesc.StencilReadMask = 0xFF;
+	depthStencilDesc.StencilWriteMask = 0xFF;
+	depthStencilDesc.FrontFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+	depthStencilDesc.FrontFace.StencilDepthFailOp = D3D11_STENCIL_OP_INCR;
+	depthStencilDesc.FrontFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+	depthStencilDesc.FrontFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+	depthStencilDesc.BackFace.StencilFailOp = D3D11_STENCIL_OP_KEEP;
+	depthStencilDesc.BackFace.StencilDepthFailOp = D3D11_STENCIL_OP_DECR;
+	depthStencilDesc.BackFace.StencilPassOp = D3D11_STENCIL_OP_KEEP;
+	depthStencilDesc.BackFace.StencilFunc = D3D11_COMPARISON_ALWAYS;
+
+	hr = _Device->CreateDepthStencilState(&depthStencilDesc, &_DepthDisabledStencilState);
+	if (FAILED(hr)) {
+		return false;
+	}
+	return true;
+	   
 }
 
 

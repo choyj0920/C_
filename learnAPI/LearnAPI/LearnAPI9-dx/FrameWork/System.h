@@ -10,6 +10,7 @@ private:
 	HINSTANCE _Inst;
 	HWND m_hWnd;
 
+
 	bool isFullScreen;
 	// 창 끄는 함수
 	void ShutdownWindows();
@@ -30,6 +31,9 @@ public:
 	//사용할 객체들
 	GraphicsClass* graphics;
 	InputClass* InputC;
+	CPUClass* _cpuC;
+	TimeClass* _TimeC;
+
 	//외부에서 윈도우클래스 초기화 함수
 	bool Initialize(HINSTANCE hinstance, bool isFull = false,int =800,int =600);
 };

@@ -6,6 +6,8 @@ System::System()
 	// 키입력, 그래픽클래스 NULL
 	InputC = NULL;
 	graphics = NULL;
+	_TimeC = NULL;
+	_cpuC = NULL;
 }
 
 System::~System()
@@ -96,12 +98,39 @@ void System::InitializeWindows(HINSTANCE hInst, bool isFull, int& screenW, int& 
 //키, 그래픽 실행-오류 발생시 false리턴
 bool System::Frame()
 {	//키가 esc눌리면 -false리턴
+	_cpuC->Frame();
+	int x = 0;
+	if (InputC->IsKeyDown(VK_LEFT))
+		x--;
+	if (InputC->IsKeyDown(VK_RIGHT))
+		x++;
+	int y = 0;
+	if (InputC->IsKeyDown(VK_UP))
+		y++;
+	if (InputC->IsKeyDown(VK_DOWN))
+		y--;
+	   	 
+	_TimeC->Frame();
+
+	if (!graphics->Frame(_TimeC->GetdeltaTime(), x, y))
+		return false;
 	if (InputC->IsKeyDown(VK_ESCAPE)) {
 		return false;
 	}
 	if (!graphics->Frame()) {//그래픽 잘못 그리면 false리턴 종료
 		return false;
 	}
+
+
+	TCHAR str1[MAX_PATH] = { 0, };
+	TCHAR str2[MAX_PATH] = { 0, };
+	byte ms = ((int)(_TimeC->GetdelTime() * 100) % 100);
+	byte cho = (((int)(_TimeC->GetdelTime() * 100) / 100) % 60);
+	byte bun = (((int)(_TimeC->GetdelTime() * 100) / 6000) % 60);
+	swprintf_s(str1, L"%d:%d:%d", bun, cho, ms);
+	swprintf_s(str2, L"FPS:%d,CPUUSAGE: %d %%, DeltaTIme : %f,GameTIme : %s", _TimeC->GetFps(), _cpuC->GetCpuPercentage(), _TimeC->GetdeltaTime(), str1);
+	SetWindowText(m_hWnd, str2);
+
 	return true; //아니면 true
 }
 
@@ -121,8 +150,10 @@ int System::Run()
 		if (msg.message == WM_QUIT) {//종료 메시지 들어오면 종료
 			done = true;
 		}
-		else
-			done = !Frame(); //종료 메시지 아니면 Frame실행
+		else {
+		
+			done = !Frame();
+		}
 	}
 	// 종료 될 때 -Shutdown실행
 	Shutdown(); 
@@ -140,6 +171,14 @@ void System::Shutdown()
 	if (InputC) { //할당 되어있으면
 		delete InputC; //인풋 해제함수
 		InputC = NULL;
+	}
+	if (_TimeC) { //할당 되어있으면
+		delete _TimeC; //인풋 해제함수
+		_TimeC = NULL;
+	}
+	if (_cpuC) { //할당 되어있으면
+		delete _cpuC; //인풋 해제함수
+		_cpuC = NULL;
 	}
 	ShutdownWindows(); //윈도우api관련 해제
 }
@@ -210,11 +249,34 @@ bool System::Initialize(HINSTANCE hinstance, bool isFull, int screenW, int scree
 		if (!graphics) //할당 안되면 종료
 			return false;
 	}
-	
-	result =graphics->Initialize(screenW, screenH, m_hWnd, isFull);//초기화 제대로 안되면 종료
+	result = graphics->Initialize(screenW, screenH, m_hWnd, isFull);//초기화 제대로 안되면 종료
 	if (!result) {
 		return false;
 	}
+
+	//타임 클래스 객체 생성
+	if (_TimeC == NULL) {
+		_TimeC = new TimeClass; //그래픽 동적할당
+		if (!_TimeC) //할당 안되면 종료
+			return false;
+	}
+	
+	result = _TimeC->Initialize();//초기화 제대로 안되면 종료
+	if (!result) {
+		return false;
+	}
+	//cpu 클래스 객체 생성
+	if (_cpuC == NULL) {
+		_cpuC = new CPUClass; //그래픽 동적할당
+		if (!_cpuC) //할당 안되면 종료
+			return false;
+	}
+
+	result = _cpuC->Initialize();//초기화 제대로 안되면 종료
+	if (!result) {
+		return false;
+	}
+
 	return true;
 	
 }

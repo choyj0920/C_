@@ -1,5 +1,6 @@
 #include "../framework.h"
 
+
 ModelRect::ModelRect()
 {
 	_VertexBuffer = NULL;

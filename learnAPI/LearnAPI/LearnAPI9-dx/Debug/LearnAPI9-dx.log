@@ -1,1 +1,1 @@
-﻿  LearnAPI9-dx.vcxproj -> C:\Users\choyj\source\repos\SBSar_\C_\learnAPI\LearnAPI\Debug\LearnAPI9-dx.exe
+﻿DirectXTex.lib(DirectXTexImage.obj) : fatal error LNK1112: 'ARM' 모듈 컴퓨터 종류가 'x86' 대상 컴퓨터 종류와 충돌합니다.

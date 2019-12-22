@@ -1,4 +1,4 @@
-#include "framework.h"
+#include"framework.h"
 
 HRESULT TextureClass::CreateShaderResourceViewFromFile(ID3D11Device* device, const TCHAR* filename, const TCHAR* ext)
 {

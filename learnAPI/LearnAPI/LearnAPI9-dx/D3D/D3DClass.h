@@ -8,6 +8,7 @@ class D3DClass {
 	ID3D11RenderTargetView* _RenderTargetView;
 	ID3D11Texture2D* _DepthStencilBuffer;
 	ID3D11DepthStencilState* _DepthStencilState;
+	ID3D11DepthStencilState* _DepthDisabledStencilState;
 	ID3D11DepthStencilView* _DepthStencilView;
 	ID3D11RasterizerState* _RasterState;
 
@@ -32,6 +33,9 @@ public:
 	void GetProjectionMatrix(XMMATRIX& copy);
 	void GetWorldMatrix(XMMATRIX& copy);
 	void GetOrthoMatrix(XMMATRIX& copy);
+
+	void TurnZBufferOn();
+	void TurnZBufferOff();
 
 private:
 	bool CreateDeviceNContext(); //**ID3D11Device와 ID3D11DeviceContext를 생성**

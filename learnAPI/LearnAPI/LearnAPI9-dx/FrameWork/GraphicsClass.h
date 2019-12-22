@@ -13,6 +13,11 @@ private:
 	//ModelTraingle* _Model;
 	//ModelRect* _Model;
 	ModelCube* _Model;
+	TextureShader* _Textureshader;
+	ModelAxis* _axis;
+	SpriteClass* _spriteModel;
+	SpriteObjectClass* _spriteObject;
+
 public:
 	GraphicsClass();
 	GraphicsClass(const GraphicsClass& copy);
@@ -22,6 +27,7 @@ public:
 	bool Initialize(int x, int y, HWND, bool);
 	void Release();
 	bool Frame();
+	bool Frame(float,float,float);
 
 private:
 	bool Render();

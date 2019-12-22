@@ -1,5 +1,4 @@
-#include "../framework.h"
-
+#include "framework.h"
 #include "D3DUtilClass.h"
 
 ColorShader::ColorShader()

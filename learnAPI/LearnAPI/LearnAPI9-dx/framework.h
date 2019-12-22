@@ -1,6 +1,7 @@
 ﻿#pragma once
 #pragma comment(lib, "d3d11.lib")//이거안넣음녀 오류
 #pragma comment(lib, "d3dcompiler.lib")//이거안넣음녀 오류
+#pragma comment(lib, "DirectXTex.lib")//이거안넣음녀 오류
 
 // 제공 디파인을 위한...
 #define WIN32_LEAN_AND_MEAN
@@ -10,6 +11,7 @@
 
 
 // 헤더들 include.
+#include <Pdh.h>
 #include <stdio.h>
 #include <Windows.h>
 #include <tchar.h>
@@ -27,17 +29,30 @@
 // 필요 네임스페이스 using들.
 using namespace std;
 using namespace DirectX;
+#include "CPUClass.h"
+
+#include "ModelAxis.h"
 #include "TextureClass.h"
 
+#include "TimeClass.h"
+
 #include "ModelCube.h"
+
 #include "D3D/ModelTraingle.h" 
 #include "D3D/ModelRect.h"
+#include "SpriteClass.h"
+
+#include "TextureShader.h"
+#include "SpriteObjectClass.h"
+
 #include "D3D/ColorShader.h" 
 #include "D3D/Camera.h"
 #include "D3D/D3DClass.h"
 
+
 #include "GraphicsClass.h"
 #include "InputClass.h"
+
 
 // 싱클톤 클래스
 

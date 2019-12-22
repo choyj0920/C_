@@ -115,21 +115,24 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;DirectXTex.lib;Pdh.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D3D\;D3D\Model\;D3D\Shader\;FrameWork\;..\;.\;\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>framework.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dxguid.lib;d3d11.lib;d3dcompiler.lib;DirectXTex.lib;Pdh.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CPUClass.h" />
     <ClInclude Include="D3D\Camera.h" />
     <ClInclude Include="D3D\ColorShader.h" />
     <ClInclude Include="D3D\D3DClass.h" />
@@ -165,10 +169,17 @@
     <ClInclude Include="FrameWork\InputClass.h" />
     <ClInclude Include="FrameWork\System.h" />
     <ClInclude Include="LearnAPI9-dx.h" />
+    <ClInclude Include="ModelAxis.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SpriteClass.h" />
+    <ClInclude Include="SpriteObjectClass.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextureClass.h" />
+    <ClInclude Include="TextureShader.h" />
+    <ClInclude Include="TimeClass.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CPUClass.cpp" />
     <ClCompile Include="D3D\Camera.cpp" />
     <ClCompile Include="D3D\ColorShader.cpp" />
     <ClCompile Include="D3D\D3DClass.cpp">
@@ -187,6 +198,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
+    <ClCompile Include="ModelAxis.cpp" />
+    <ClCompile Include="SpriteClass.cpp" />
+    <ClCompile Include="SpriteObjectClass.cpp" />
+    <ClCompile Include="TextureClass.cpp" />
+    <ClCompile Include="TextureShader.cpp" />
+    <ClCompile Include="TimeClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnAPI9-dx.rc" />
@@ -194,6 +211,7 @@
   <ItemGroup>
     <Image Include="LearnAPI9-dx.ico" />
     <Image Include="small.ico" />
+    <Image Include="냐옹이.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="D3D\Shader\Color.vs">
@@ -206,6 +224,8 @@
       <EnableDebuggingInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</EnableDebuggingInformation>
       <FileType>Document</FileType>
     </None>
+    <None Include="D3D\Shader\Texture.ps" />
+    <None Include="D3D\Shader\Texture.vs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="D3D\Shader\Color.ps" />
