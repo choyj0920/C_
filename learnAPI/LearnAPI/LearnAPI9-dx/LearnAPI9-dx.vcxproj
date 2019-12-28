@@ -170,6 +170,7 @@
     <ClInclude Include="FrameWork\System.h" />
     <ClInclude Include="LearnAPI9-dx.h" />
     <ClInclude Include="ModelAxis.h" />
+    <ClInclude Include="Model_mal.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SpriteClass.h" />
     <ClInclude Include="SpriteObjectClass.h" />
@@ -199,6 +200,7 @@
     </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
     <ClCompile Include="ModelAxis.cpp" />
+    <ClCompile Include="Model_mal.cpp" />
     <ClCompile Include="SpriteClass.cpp" />
     <ClCompile Include="SpriteObjectClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
@@ -212,6 +214,7 @@
     <Image Include="LearnAPI9-dx.ico" />
     <Image Include="small.ico" />
     <Image Include="냐옹이.jpg" />
+    <Image Include="마알.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="D3D\Shader\Color.vs">

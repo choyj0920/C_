@@ -87,7 +87,7 @@ void SpriteClass::ReleaseBuffers()
 
 }
 
-bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, int positionX, int positionY)
+bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, float positionX, float positionY)
 {
 	float left, right, top, bottom;
 	VertexType* vertices;
@@ -132,6 +132,74 @@ bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, int position
 	vertices[4].texture = XMFLOAT2(01.0f, 0.0f);
 	vertices[5].position = XMFLOAT3(right, bottom, 0.0f);
 	vertices[5].texture = XMFLOAT2(1.0f, 1.0f);
+
+	//버텍스 버퍼를 쓸수 있도록 잠그십시오.
+	result = deviceContext->Map(_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	if (FAILED(result))
+		return false;
+
+	//버텍스 버퍼의 데이터에 대한 데이터 가져오기
+	verticesPtr = (VertexType*)mappedResource.pData;
+
+	//데이터를 정점 버퍼에 복사합니다.
+	memcpy(verticesPtr, (void*)vertices, (sizeof(VertexType) * _VertexCount));
+
+	//버텍스 버퍼 잠금해제.
+	deviceContext->Unmap(_VertexBuffer, 0);
+
+	//버텍스 배열을 더 이상 필요하지 않게 해제하십시오.
+	delete[] vertices;
+	vertices = NULL;
+
+	return true;
+}
+
+bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, float sizeU, float sizeV, float posU, float posV, float positionX, float positionY)
+{
+	float left, right, top, bottom;
+	VertexType* vertices;
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
+	VertexType* verticesPtr;
+	HRESULT result;
+
+	//이 비트 맵을 네더링 할 위치가 변경되지 않은 경우 현재 ㅇㄹ바른 매개변수가 있으므로 정점 버퍼를 업데이트 하지 않습니다.
+	/*if ((positionX == _PreviousPosX) && (positionY == _PreviousPosY))
+		return true;*/
+
+	//변경된 경우 ㅇ렌더링 되는 위치 업데이트
+	_PreviousPosX = positionX;
+	_PreviousPosY = positionY;
+
+	//비트맵의 왼쪽면의 화면 좌표를 계산합니다,
+	left = (float)((_ScreenW / 2) * -1) + (float)positionX;
+	//비트맵의 오른쪽의 화면 좌표를 계산
+	right = left + (float)_BitmapW;
+	//비트맵 상단의 화면 좌표를 계산합니다.
+	top = (float)((_ScreenH / 2) * -1) + (float)positionY;
+	//비트맵의 아래쪾의 화면 좌표를 계산하십시오.
+	bottom = top - (float)_BitmapH;
+
+	//버텍스 배열
+	vertices = new VertexType[_VertexCount];
+	if (!vertices)
+		return false;
+
+	//버텍스 배열에 데이터 로드
+	//첫번쨰 삼각형
+	vertices[0].position = XMFLOAT3(left, top, 0.0f);
+	vertices[0].texture = XMFLOAT2(posU, posV);
+
+	vertices[1].position = XMFLOAT3(right, bottom, 0.0f);
+	vertices[1].texture = XMFLOAT2(posU+sizeU, posV+sizeV);
+	vertices[2].position = XMFLOAT3(left, bottom, 0.0f);
+	vertices[2].texture = XMFLOAT2(posU, posV+sizeV);
+	//두번째
+	vertices[3].position = XMFLOAT3(left, top, 0.0f);
+	vertices[3].texture = XMFLOAT2(posU, posV);
+	vertices[4].position = XMFLOAT3(right, top, 0.0f);
+	vertices[4].texture = XMFLOAT2(posU+sizeU, posV);
+	vertices[5].position = XMFLOAT3(right, bottom, 0.0f);
+	vertices[5].texture = XMFLOAT2(posU + sizeU , posV + sizeV);
 
 	//버텍스 버퍼를 쓸수 있도록 잠그십시오.
 	result = deviceContext->Map(_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
@@ -207,6 +275,7 @@ SpriteClass::~SpriteClass()
 {
 }
 
+
 bool SpriteClass::Initialize(ID3D11Device* device, int screenWidth, int screenHeight,const WCHAR* textureFilename, int bitmapWidth, int bitmapHeight)
 {
 	bool result;
@@ -240,11 +309,24 @@ void SpriteClass::Release()
 	ReleaseBuffers();
 }
 
-bool SpriteClass::Render(ID3D11DeviceContext* deviceContext, int positionX, int positionY)
+bool SpriteClass::Render(ID3D11DeviceContext* deviceContext, float positionX, float positionY)
 {
 	bool result;
 
 	result = UpdateBuffers(deviceContext, positionX, positionY);
+	if (!result)
+		return false;
+
+	RenderBuffers(deviceContext);
+
+	return true;
+}
+
+bool SpriteClass::Render(ID3D11DeviceContext* deviceContext, float positionX, float positionY, float sizeU, float sizeV, float posU, float posV)
+{
+	bool result;
+
+	result = UpdateBuffers(deviceContext, sizeU, sizeV, posU, posV, positionX, positionY);
 	if (!result)
 		return false;
 

@@ -44,6 +44,7 @@ using namespace DirectX;
 
 #include "TextureShader.h"
 #include "SpriteObjectClass.h"
+#include "Model_mal.h"
 
 #include "D3D/ColorShader.h" 
 #include "D3D/Camera.h"

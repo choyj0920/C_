@@ -16,6 +16,12 @@ D3DClass::D3DClass()
 	_RasterState = NULL;
 	_DepthDisabledStencilState = NULL;
 
+	//알파블랜드
+	_AlphaEnableBlendingState = NULL;
+	_AlphaDisableBlendingState = NULL;
+
+
+
 	_mEnable4xMsaa = false;
 }
 
@@ -82,6 +88,7 @@ bool D3DClass::Initialize(int screenW, int screenH, bool vSync, HWND hWnd
 
 void D3DClass::Release()
 {
+
 	if (_RasterState != NULL)
 	{
 		_RasterState->Release();
@@ -132,6 +139,17 @@ void D3DClass::Release()
 	if (_Device != NULL)
 	{
 		_Device->Release();
+	}
+
+	//알파
+	
+	if (_AlphaEnableBlendingState != NULL)
+	{
+		_AlphaEnableBlendingState->Release();
+	}
+	if (_AlphaDisableBlendingState != NULL)
+	{
+		_AlphaDisableBlendingState->Release();
 	}
 }
 
@@ -514,6 +532,31 @@ bool D3DClass::PipelineBinding()
 	// 래스터화기 상태를 설정합니다.
 	_DeviceContext->RSSetState(_RasterState);
 
+	//블렌드 상태지우기
+	D3D11_BLEND_DESC blendStateDescription;
+	memset(&blendStateDescription, 0, sizeof(D3D11_BLEND_DESC));
+	//알파 블랜드 상태만들기
+	blendStateDescription.RenderTarget[0].BlendEnable = TRUE;
+	//blendStateDescription.RenderTarget[0].SrcBlend = D3D11_BLEND_ONE;
+	blendStateDescription.RenderTarget[0].SrcBlend = D3D11_BLEND_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	blendStateDescription.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_ONE;
+	blendStateDescription.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_ZERO;
+	blendStateDescription.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	blendStateDescription.RenderTarget[0].RenderTargetWriteMask = 0x0f;
+
+	//혼합상태만들기
+	hr = _Device->CreateBlendState(&blendStateDescription, &_AlphaEnableBlendingState);
+	if (FAILED(hr))
+		return false;
+	//알파 비활성화 된 브렌드 상태 설명을 만들려면 설명을 수정하십시ㅎ오.
+	blendStateDescription.RenderTarget[0].BlendEnable = FALSE;
+	hr = _Device->CreateBlendState(&blendStateDescription, &_AlphaDisableBlendingState);
+	if (FAILED(hr)) {
+		return false;
+	}
+
 	return true;
 }
 
@@ -546,5 +589,37 @@ void D3DClass::SettingViewPort(int screenW, int screenH, float sDepth, float sNe
 	// 2D 렌더링에 사용될 정사영 행렬을 생성합니다.
 	// (XMMatrixOrthographicLH)
 	_OrthoMatrix = XMMatrixOrthographicLH((float)screenW, (float)screenH, sDepth, sNear);
+}
+
+void D3DClass::EnableAlphaBlending()
+{
+	float blendFactor[4];
+
+	//혼합요소설정
+	blendFactor[0] = 0.0f;
+	blendFactor[1] = 0.0f;
+	blendFactor[2] = 0.0f;
+	blendFactor[3] = 0.0f;
+
+	//알파 블렌딩 켜기
+	_DeviceContext->OMSetBlendState(_AlphaEnableBlendingState, blendFactor, 0xffffffff);
+
+	return;
+}
+
+void D3DClass::DisableAlphaBlending()
+{
+	float blendFactor[4];
+
+	//혼합요소설정
+	blendFactor[0] = 0.0f;
+	blendFactor[1] = 0.0f;
+	blendFactor[2] = 0.0f;
+	blendFactor[3] = 0.0f;
+
+	//알파 블렌딩 켜기
+	_DeviceContext->OMSetBlendState(_AlphaDisableBlendingState, blendFactor, 0xffffffff);
+
+	return;
 }
 

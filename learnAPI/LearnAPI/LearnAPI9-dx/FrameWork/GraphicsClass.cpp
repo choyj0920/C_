@@ -51,9 +51,11 @@ bool GraphicsClass::Render()
 
 
 	//오브젝트 클래스 이용그리기
+	_D3DC->EnableAlphaBlending();
 	result = _spriteObject->Render(_D3DC->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, _Textureshader);
 	if (!result)
 		return false;
+	_D3DC->DisableAlphaBlending();
 
 	_D3DC->TurnZBufferOn();
 
@@ -166,7 +168,7 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 		return false;
 	}
 
-	_spriteObject = new SpriteObjectClass;
+	_spriteObject = new Model_mal;
 	if (!_spriteObject)
 		return false;
 	result = _spriteObject->Initialize(hWnd, _D3DC->GetDevice(), 0, 0, 5, 5);

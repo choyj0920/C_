@@ -4,7 +4,7 @@ SpriteObjectClass::SpriteObjectClass()
 { 
 	_posX = -8;
 	_posY = 2;
-	_MoveSpeed = 20.0f;
+	_MoveSpeed = 10.0f;
 	_Model = NULL;
 }
 
@@ -42,8 +42,12 @@ void SpriteObjectClass::Release()
 
 bool SpriteObjectClass::Process(float deltatime, float mx, float my)
 {
-	_posX += mx * deltatime * _MoveSpeed;
-	_posY += my * deltatime * _MoveSpeed;
+	double dis = (mx * mx) + (my * my);
+	dis = sqrt(dis);
+	if (dis == 0)
+		return true;
+	_posX += mx / dis * deltatime * _MoveSpeed;
+	_posY += my / dis * deltatime * _MoveSpeed;
 
 	return true;
 }

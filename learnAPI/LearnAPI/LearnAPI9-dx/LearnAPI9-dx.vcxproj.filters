@@ -93,6 +93,9 @@
     <ClInclude Include="SpriteObjectClass.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Model_mal.h">
+      <Filter>소스 파일\D3D\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -146,6 +149,9 @@
     <ClCompile Include="SpriteObjectClass.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Model_mal.cpp">
+      <Filter>소스 파일\D3D\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnAPI9-dx.rc">
@@ -160,6 +166,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="냐옹이.jpg">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="마알.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

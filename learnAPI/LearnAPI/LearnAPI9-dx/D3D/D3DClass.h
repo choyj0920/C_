@@ -16,6 +16,9 @@ class D3DClass {
 	XMMATRIX _ProjectionMatrix;
 	XMMATRIX _WorldMatrix;
 	XMMATRIX _OrthoMatrix;
+
+	ID3D11BlendState* _AlphaEnableBlendingState;
+	ID3D11BlendState* _AlphaDisableBlendingState;
 public:
 	D3DClass();
 	D3DClass(const D3DClass& copy);
@@ -37,6 +40,10 @@ public:
 	void TurnZBufferOn();
 	void TurnZBufferOff();
 
+	//투명하게 만들 때
+	void EnableAlphaBlending();
+	void DisableAlphaBlending();
+
 private:
 	bool CreateDeviceNContext(); //**ID3D11Device와 ID3D11DeviceContext를 생성**
 	bool CheckQualityLevels(UINT*); // **4X MSAA 품질 수준 지원 점검.**
@@ -47,5 +54,5 @@ private:
 	bool PipelineBinding(); //뷰들 병합기에 묶기
 	void SettingViewPort(int screenW, int screenH, float sDepth, float sNear);
 
-
+	
 };
