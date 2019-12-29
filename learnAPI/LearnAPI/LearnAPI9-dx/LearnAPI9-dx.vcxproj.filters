@@ -96,6 +96,15 @@
     <ClInclude Include="Model_mal.h">
       <Filter>소스 파일\D3D\Model</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectEnumHelper.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelFileInfoClass.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Model_Mal_anis.h">
+      <Filter>소스 파일\D3D\Model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -150,6 +159,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Model_mal.cpp">
+      <Filter>소스 파일\D3D\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectEnumHelper.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelFileInfoClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Model_Mal_anis.cpp">
       <Filter>소스 파일\D3D\Model</Filter>
     </ClCompile>
   </ItemGroup>

@@ -57,7 +57,7 @@ bool Model_mal::Process(float deltatime, float mx, float my)
 	}
 	
 	_CheckTime += deltatime;
-	if (_CheckTime >= 0.1f) {
+	if (_CheckTime >= 0.05f) {
 		_posU++;
 		_CheckTime = 0;
 		if (_posU >= 4) {

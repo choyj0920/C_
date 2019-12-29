@@ -31,6 +31,10 @@ using namespace std;
 using namespace DirectX;
 #include "CPUClass.h"
 
+#include "ObjectEnumHelper.h"
+#include "ModelFileInfoClass.h"
+
+
 #include "ModelAxis.h"
 #include "TextureClass.h"
 
@@ -45,7 +49,7 @@ using namespace DirectX;
 #include "TextureShader.h"
 #include "SpriteObjectClass.h"
 #include "Model_mal.h"
-
+#include "Model_Mal_anis.h"
 #include "D3D/ColorShader.h" 
 #include "D3D/Camera.h"
 #include "D3D/D3DClass.h"

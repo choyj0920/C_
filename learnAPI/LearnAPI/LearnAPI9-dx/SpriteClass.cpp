@@ -115,23 +115,28 @@ bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, float positi
 	vertices = new VertexType[_VertexCount];
 	if (!vertices)
 		return false;
-	
+
+
+	float isright = Model_mal2::rightwork ? 0.0f : 1.0f;
+	int rig = Model_mal2::rightwork ? 1 : -1;
+
+
 	//버텍스 배열에 데이터 로드
 	//첫번쨰 삼각형
 	vertices[0].position = XMFLOAT3(left, top, 0.0f);
-	vertices[0].texture = XMFLOAT2(0.0f, 0.0f);
+	vertices[0].texture = XMFLOAT2(isright, 0.0f);
 	
 	vertices[1].position = XMFLOAT3(right, bottom, 0.0f);
 	vertices[1].texture = XMFLOAT2(1.0f, 1.0f);
 	vertices[2].position = XMFLOAT3(left, bottom, 0.0f);
-	vertices[2].texture = XMFLOAT2(0.0f, 1.0f);
+	vertices[2].texture = XMFLOAT2(isright, 1.0f);
 	//두번째
 	vertices[3].position = XMFLOAT3(left, top, 0.0f);
-	vertices[3].texture = XMFLOAT2(0.0f, 0.0f);
+	vertices[3].texture = XMFLOAT2(isright, 0.0f);
 	vertices[4].position = XMFLOAT3(right, top, 0.0f);
-	vertices[4].texture = XMFLOAT2(01.0f, 0.0f);
+	vertices[4].texture = XMFLOAT2(01.0f- isright, 0.0f);
 	vertices[5].position = XMFLOAT3(right, bottom, 0.0f);
-	vertices[5].texture = XMFLOAT2(1.0f, 1.0f);
+	vertices[5].texture = XMFLOAT2(1.0f- isright, 1.0f);
 
 	//버텍스 버퍼를 쓸수 있도록 잠그십시오.
 	result = deviceContext->Map(_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
@@ -184,22 +189,25 @@ bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, float sizeU,
 	if (!vertices)
 		return false;
 
+	float isright = Model_mal2::rightwork ? 0.0f : 1.0f;
+	int rig = Model_mal2::rightwork ? 1 : -1;
+
 	//버텍스 배열에 데이터 로드
 	//첫번쨰 삼각형
 	vertices[0].position = XMFLOAT3(left, top, 0.0f);
-	vertices[0].texture = XMFLOAT2(posU, posV);
+	vertices[0].texture = XMFLOAT2(isright+ (rig*posU), posV);
 
 	vertices[1].position = XMFLOAT3(right, bottom, 0.0f);
-	vertices[1].texture = XMFLOAT2(posU+sizeU, posV+sizeV);
+	vertices[1].texture = XMFLOAT2(isright +rig*(posU+sizeU), posV+sizeV);
 	vertices[2].position = XMFLOAT3(left, bottom, 0.0f);
-	vertices[2].texture = XMFLOAT2(posU, posV+sizeV);
+	vertices[2].texture = XMFLOAT2(isright + (rig * posU), posV+sizeV);
 	//두번째
 	vertices[3].position = XMFLOAT3(left, top, 0.0f);
-	vertices[3].texture = XMFLOAT2(posU, posV);
+	vertices[3].texture = XMFLOAT2(isright + (rig * posU), posV);
 	vertices[4].position = XMFLOAT3(right, top, 0.0f);
-	vertices[4].texture = XMFLOAT2(posU+sizeU, posV);
+	vertices[4].texture = XMFLOAT2(isright + rig * (posU + sizeU), posV);
 	vertices[5].position = XMFLOAT3(right, bottom, 0.0f);
-	vertices[5].texture = XMFLOAT2(posU + sizeU , posV + sizeV);
+	vertices[5].texture = XMFLOAT2(isright + rig * (posU + sizeU), posV + sizeV);
 
 	//버텍스 버퍼를 쓸수 있도록 잠그십시오.
 	result = deviceContext->Map(_VertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);

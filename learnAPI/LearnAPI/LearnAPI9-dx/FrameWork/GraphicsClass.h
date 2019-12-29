@@ -17,7 +17,8 @@ private:
 	ModelAxis* _axis;
 	SpriteClass* _spriteModel;
 	//SpriteObjectClass* _spriteObject;
-	Model_mal* _spriteObject;
+	//Model_mal* _spriteObject;
+	Model_mal2* _spriteObject;
 public:
 	GraphicsClass();
 	GraphicsClass(const GraphicsClass& copy);

@@ -170,7 +170,10 @@
     <ClInclude Include="FrameWork\System.h" />
     <ClInclude Include="LearnAPI9-dx.h" />
     <ClInclude Include="ModelAxis.h" />
+    <ClInclude Include="ModelFileInfoClass.h" />
     <ClInclude Include="Model_mal.h" />
+    <ClInclude Include="Model_Mal_anis.h" />
+    <ClInclude Include="ObjectEnumHelper.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SpriteClass.h" />
     <ClInclude Include="SpriteObjectClass.h" />
@@ -200,7 +203,10 @@
     </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
     <ClCompile Include="ModelAxis.cpp" />
+    <ClCompile Include="ModelFileInfoClass.cpp" />
     <ClCompile Include="Model_mal.cpp" />
+    <ClCompile Include="Model_Mal_anis.cpp" />
+    <ClCompile Include="ObjectEnumHelper.cpp" />
     <ClCompile Include="SpriteClass.cpp" />
     <ClCompile Include="SpriteObjectClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />

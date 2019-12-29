@@ -71,7 +71,7 @@ GraphicsClass::GraphicsClass()
 	_SDepth = 1000.0f;
 	_SNear = 0.1f;
 	_D3DC = NULL;
-	_Vsync_enable = false;
+	_Vsync_enable = true;
 	_Camera = NULL;
 	_Model = NULL;
 	_axis = NULL;
@@ -168,10 +168,10 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 		return false;
 	}
 
-	_spriteObject = new Model_mal;
+	_spriteObject = new Model_mal2;
 	if (!_spriteObject)
 		return false;
-	result = _spriteObject->Initialize(hWnd, _D3DC->GetDevice(), 0, 0, 5, 5);
+	result = _spriteObject->Initialize(hWnd, _D3DC->GetDevice(), 0, 0, 5, 5, _T("MalModel.txt"));
 	if (!result)
 		return false;
 

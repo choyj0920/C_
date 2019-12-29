@@ -3,6 +3,7 @@
 
 #include "framework.h"
 #include "FrameWork/System.h"
+#include "D3D\D3DUtilClass.h"
 
 void OutputShaderErrorMessage(ID3D10Blob* errorMessage, HWND hwnd, const TCHAR* shaderFilename) {
 	char* compileErrors;
@@ -33,6 +34,25 @@ void OutputShaderErrorMessage(ID3D10Blob* errorMessage, HWND hwnd, const TCHAR* 
 	MessageBox(hwnd, _T("Error compiling shader. Check shader-error.txt for message"), shaderFilename, MB_OK);
 
 	return;
+}
+
+void ExtractName(TCHAR* pOut, char* pIn)
+{
+	char szTemp[MAX_PATH] = { 0, };
+	
+	int iLength = strlen(pIn);
+	int i, j;
+	for (i = 0; i < iLength; i++) {
+		if (pIn[i] == '"') {
+			for (j = ++i; j < iLength; j++) {
+				if (pIn[j] == '"')break;
+				szTemp[j - 1] = pIn[j];
+			}
+			szTemp[j - i] = '\0';
+			break;
+		}
+	}
+	MultiByteToWideChar(CP_ACP, 0, (LPCSTR)szTemp, -1, pOut, iLength);
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int iCmdshow)
