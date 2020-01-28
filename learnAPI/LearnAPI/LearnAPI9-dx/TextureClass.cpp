@@ -1,6 +1,6 @@
 #include"framework.h"
 
-HRESULT TextureClass::CreateShaderResourceViewFromFile(ID3D11Device* device, const TCHAR* filename, const TCHAR* ext)
+HRESULT TextureClass::CreateShaderResourceViewFromFile(ID3D11Device* device, const TCHAR* filename,const TCHAR* ext)
 {
 	TexMetadata imageMetadata;
 	ScratchImage ScratchImgage;
@@ -46,6 +46,9 @@ bool TextureClass::Initialize(ID3D11Device* device, const TCHAR* filename)
 	TCHAR ext[_MAX_EXT];
 	TCHAR name[_MAX_EXT];
 	//_wsplitpath(filename, 0, 0, name, ext);
+	//확장명 분리
+	_wsplitpath_s(filename,0,0,0,0,name,256,ext,256);
+
 
 	result = CreateShaderResourceViewFromFile(device, filename, ext);
 	if (FAILED(result))

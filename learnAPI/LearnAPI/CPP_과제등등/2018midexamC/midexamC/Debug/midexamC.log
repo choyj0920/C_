@@ -1,0 +1,7 @@
+﻿  pch.cpp
+  midexamC.cpp
+  Ticket.cpp
+  User.cpp
+  코드를 생성하고 있습니다...
+C:\Users\choyj\OneDrive\바탕 화면\midexamC\midexamC\Ticket.cpp(75,6): warning C4101: 'm' :참조되지 않은 지역 변수입니다.
+  midexamC.vcxproj -> C:\Users\choyj\OneDrive\바탕 화면\midexamC\Debug\midexamC.exe

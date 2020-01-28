@@ -12,7 +12,7 @@ class Model_mal2:public ModelFileInfoClass
 	PlayerAnimationType _AniType;
 	
 	SpriteClass* _Model;
-
+		
 public:
 	static bool rightwork;
 	Model_mal2();

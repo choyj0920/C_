@@ -164,11 +164,15 @@
     <ClInclude Include="D3D\ModelTraingle.h" />
     <ClInclude Include="D3D\Model\ModelCube.h" />
     <ClInclude Include="DirectXTex.h" />
+    <ClInclude Include="enermyObject.h" />
+    <ClInclude Include="fontdata\FontClass.h" />
+    <ClInclude Include="fontdata\FontShader.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="FrameWork\GraphicsClass.h" />
     <ClInclude Include="FrameWork\InputClass.h" />
     <ClInclude Include="FrameWork\System.h" />
     <ClInclude Include="LearnAPI9-dx.h" />
+    <ClInclude Include="Mal_with_text.h" />
     <ClInclude Include="ModelAxis.h" />
     <ClInclude Include="ModelFileInfoClass.h" />
     <ClInclude Include="Model_mal.h" />
@@ -178,6 +182,7 @@
     <ClInclude Include="SpriteClass.h" />
     <ClInclude Include="SpriteObjectClass.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextObjectClass.h" />
     <ClInclude Include="TextureClass.h" />
     <ClInclude Include="TextureShader.h" />
     <ClInclude Include="TimeClass.h" />
@@ -192,6 +197,9 @@
     <ClCompile Include="D3D\ModelRect.cpp" />
     <ClCompile Include="D3D\ModelTraingle.cpp" />
     <ClCompile Include="D3D\Model\ModelCube.cpp" />
+    <ClCompile Include="enermyObject.cpp" />
+    <ClCompile Include="fontdata\FontClass.cpp" />
+    <ClCompile Include="fontdata\FontShader.cpp" />
     <ClCompile Include="FrameWork\GraphicsClass.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -202,6 +210,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="LearnAPI9-dx.cpp" />
+    <ClCompile Include="Mal_with_text.cpp" />
     <ClCompile Include="ModelAxis.cpp" />
     <ClCompile Include="ModelFileInfoClass.cpp" />
     <ClCompile Include="Model_mal.cpp" />
@@ -209,6 +218,7 @@
     <ClCompile Include="ObjectEnumHelper.cpp" />
     <ClCompile Include="SpriteClass.cpp" />
     <ClCompile Include="SpriteObjectClass.cpp" />
+    <ClCompile Include="TextObjectClass.cpp" />
     <ClCompile Include="TextureClass.cpp" />
     <ClCompile Include="TextureShader.cpp" />
     <ClCompile Include="TimeClass.cpp" />
@@ -217,6 +227,7 @@
     <ResourceCompile Include="LearnAPI9-dx.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="fontdata\testfont.dds" />
     <Image Include="LearnAPI9-dx.ico" />
     <Image Include="small.ico" />
     <Image Include="냐옹이.jpg" />
@@ -235,9 +246,14 @@
     </None>
     <None Include="D3D\Shader\Texture.ps" />
     <None Include="D3D\Shader\Texture.vs" />
+    <None Include="fontdata\Font.ps" />
+    <None Include="fontdata\Font.vs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="D3D\Shader\Color.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="fontdata\testfontdata.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

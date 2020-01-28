@@ -1,0 +1,41 @@
+// GLOBALS
+Texture2D shaderTexture;
+SamplerState SampleType;
+
+cbuffer PixelBuffer{
+	float4 pixelColor;
+};
+
+// TYPEDEFS
+struct PixelInputType
+{
+ float4 position : SV_POSITION;
+ float2 tex : TEXCOORD0;
+};
+
+
+// Pixel Shader
+float4 FontPixelShader(PixelInputType input) : SV_TARGET
+{
+ float4 color;
+ 
+ // 이 텍스처 좌표 위치에서 샘플러를 사용하여 텍스처에서 픽셀 색상을 샘플링합니다.
+ color = shaderTexture.Sample(SampleType, input.tex);
+
+ if(color.r == 0.0f){
+ //텍스처의 색상이 검은색이면서 픽셀을 투명하게  처리
+	color.a=0.0f;
+
+ }
+ else{
+ //텍스처의 검은색이 아닌 경우 글꼴의 픽셀이므로 글꼴 픽셀 색상을 사용하여 그린다.
+	color.a=1.0f;
+	color=color*pixelColor;
+ }
+
+
+ return color;
+
+
+}
+//=============================================================================================

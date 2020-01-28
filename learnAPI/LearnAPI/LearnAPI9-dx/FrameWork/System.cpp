@@ -99,6 +99,7 @@ void System::InitializeWindows(HINSTANCE hInst, bool isFull, int& screenW, int& 
 bool System::Frame()
 {	//키가 esc눌리면 -false리턴
 	_cpuC->Frame();
+	bool shot = false;
 	int x = 0;
 	if (InputC->IsKeyDown(VK_LEFT))
 		x--;
@@ -109,10 +110,13 @@ bool System::Frame()
 		y++;
 	if (InputC->IsKeyDown(VK_DOWN))
 		y--;
-	   	 
+	  
 	_TimeC->Frame();
+	if (InputC->IsKeyDown(VK_SPACE)) {
+		shot = true;
+	}
 
-	if (!graphics->Frame(_TimeC->GetdeltaTime(), x, y))
+	if (!graphics->Frame(_TimeC->GetdeltaTime(), x, y,shot))
 		return false;
 	if (InputC->IsKeyDown(VK_ESCAPE)) {
 		return false;
@@ -120,7 +124,8 @@ bool System::Frame()
 	if (!graphics->Frame()) {//그래픽 잘못 그리면 false리턴 종료
 		return false;
 	}
-
+	
+	
 
 	TCHAR str1[MAX_PATH] = { 0, };
 	TCHAR str2[MAX_PATH] = { 0, };

@@ -2,7 +2,7 @@
 
 bool GraphicsClass::Render()
 {
-	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
+	XMMATRIX worldMatrix, viewMatrix, projectionMatrix,orthoMatrix;
 	bool result = false;
 
 	// 씬 그리기를 시작하기 위해 버퍼의 내용을 지웁니다.
@@ -15,6 +15,7 @@ bool GraphicsClass::Render()
 	_Camera->GetViewMatrix(viewMatrix);
 	_D3DC->GetWorldMatrix(worldMatrix);
 	_D3DC->GetProjectionMatrix(projectionMatrix);
+	_D3DC->GetOrthoMatrix(orthoMatrix);
 
 	_axis->Render(_D3DC->GetDeviceContext());
 
@@ -27,7 +28,6 @@ bool GraphicsClass::Render()
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	_Model->Render(_D3DC->GetDeviceContext());
 
-	
 
 	// Render the model using the shader.
 	result = _ShaderClass->Render(_D3DC->GetDeviceContext(), _Model->GetIndexCount(), worldMatrix, viewMatrix,
@@ -47,21 +47,29 @@ bool GraphicsClass::Render()
 	//	projectionMatrix, _spriteModel->GetTexture());
 	//if (!result)
 	//	return false;
-
-
-
+	   
 	//오브젝트 클래스 이용그리기
+	//알파 블랜딩 on
 	_D3DC->EnableAlphaBlending();
-	result = _spriteObject->Render(_D3DC->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, _Textureshader);
+
+	//말 그리기
+	
+	//텍스쳐 그리기
+	result = _textObject->Render(_D3DC->GetDeviceContext(), worldMatrix, orthoMatrix);
 	if (!result)
 		return false;
-	_D3DC->DisableAlphaBlending();
 
+	result = _spriteObject->Render(_D3DC->GetDeviceContext(), worldMatrix, viewMatrix, projectionMatrix, orthoMatrix, _Textureshader);
+	if (!result)
+		return false;
+
+	//알파 블랜딩 off
+	_D3DC->DisableAlphaBlending();
+	//2D렌더링 종료 후 z버퍼on 
 	_D3DC->TurnZBufferOn();
 
 	// 버퍼에 그려진 씬을 화면에 표시합니다.
 	_D3DC->EndScene();
-
 
 	return true;
 }
@@ -79,6 +87,7 @@ GraphicsClass::GraphicsClass()
 	_Textureshader = NULL;
 	_spriteModel = NULL;
 	_spriteObject = NULL;
+	_textObject = NULL;
 	// 추가 클래스 초기화.
 	/*
 	_LightShader = NULL;
@@ -101,7 +110,7 @@ GraphicsClass::~GraphicsClass()
 bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullScreen)
 {
 	bool result = false;
-
+	_hwnd = hWnd;
 	// Direct3D 객체를 생성합니다.
 	_D3DC = new D3DClass;
 	if (!_D3DC)
@@ -123,7 +132,16 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 
 	// Set the initial position of the camera.
 	_Camera->SetPosition(-3.0f, 3.0f, -10.0f);
-	_Camera->SetRotation(1.0f, 10.0f, 0.0f);
+	//_Camera->SetRotation(1.0f, 10.0f, 0.0f);
+
+	XMMATRIX baseViewMatrix;
+	_Camera->SetPosition(0.0f, 0.0f, -1.0f);
+	_Camera->Render();
+
+	_Camera->SetPosition(-3.0f, 3.0f, -10.0f);
+	_Camera->GetViewMatrix(baseViewMatrix);
+
+
 	// Create the model object.
 	_Model = new ModelCube;
 	if (!_Model)
@@ -167,15 +185,15 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 		MessageBox(hWnd, _T("Could not initialize the texture shader object."), _T("Error"), MB_OK);
 		return false;
 	}
-
+	/* 모델 말
 	_spriteObject = new Model_mal2;
 	if (!_spriteObject)
 		return false;
 	result = _spriteObject->Initialize(hWnd, _D3DC->GetDevice(), 0, 0, 5, 5, _T("MalModel.txt"));
 	if (!result)
 		return false;
-
-
+*/
+	
 	// Create the color shader object.
 	_ShaderClass = new ColorShader;
 	if (!_ShaderClass)
@@ -189,12 +207,35 @@ bool GraphicsClass::Initialize(int screenW, int screenH, HWND hWnd, bool IsFullS
 		return false;
 	}
 
+	
+	_textObject = new TextObjectClass;
+	if (!_textObject)
+		return false;
+	result = _textObject->Initialize(_D3DC->GetDevice(), _D3DC->GetDeviceContext(), hWnd, screenW, screenH, baseViewMatrix);
+	if (!result) {
+		MessageBox(hWnd, _T("Could not initialize the text object."), _T("Error"), MB_OK);
+		return false;
+	}
+	_spriteObject = new Mal_with_text;
+	if (!_spriteObject)
+		return false;
+	result = _spriteObject->Initialize(hWnd, _D3DC->GetDevice(), _D3DC->GetDeviceContext(), 0, 0, 3, 3, _T("MalModel.txt"), screenW, screenH, baseViewMatrix);
+	if (!result)
+		return false;
+
 	return true;
 
 }
 
 void GraphicsClass::Release()
 {
+	if (_textObject)
+	{
+		_textObject->Release();
+		delete _textObject;
+		_textObject = NULL;
+	}
+
 	if (_Textureshader) {
 		_Textureshader->Release();
 		delete _Textureshader;
@@ -242,16 +283,24 @@ void GraphicsClass::Release()
 		delete _D3DC;
 		_D3DC = NULL;
 	}
+	
 }
 
-bool GraphicsClass::Frame(float deltaTime, float mx , float my)
+bool GraphicsClass::Frame(float deltaTime, float mx , float my,bool shot)
 {
 	bool result;
-
-	result = _spriteObject->Process(deltaTime, mx, my);
+	static float checktime = 0.0f;
+	result = _spriteObject->Process(deltaTime, mx, my, _D3DC->GetDeviceContext());
 	if (!result)
 		return false;
+	checktime += deltaTime;
+	if (shot) {
+		if (checktime > 0.3f) {
+			checktime = 0.0f;
+			_spriteObject->shotcat(_hwnd, _D3DC->GetDevice(), 0, 0, 1, 1);
 
+		}
+	}
 	return true;
 }
 

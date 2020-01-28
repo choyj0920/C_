@@ -189,8 +189,8 @@ bool SpriteClass::UpdateBuffers(ID3D11DeviceContext* deviceContext, float sizeU,
 	if (!vertices)
 		return false;
 
-	float isright = Model_mal2::rightwork ? 0.0f : 1.0f;
-	int rig = Model_mal2::rightwork ? 1 : -1;
+	float isright = Mal_with_text::rightwork ? 0.0f : 1.0f;
+	int rig = Mal_with_text::rightwork ? 1 : -1;
 
 	//버텍스 배열에 데이터 로드
 	//첫번쨰 삼각형

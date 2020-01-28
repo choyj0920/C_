@@ -25,7 +25,8 @@
 #include <DirectXPackedVector.h>
 #include<d3dcompiler.h>
 
-
+#include <vector>
+#include <list>
 // 필요 네임스페이스 using들.
 using namespace std;
 using namespace DirectX;
@@ -39,6 +40,7 @@ using namespace DirectX;
 #include "TextureClass.h"
 
 #include "TimeClass.h"
+#include "fontdata/FontClass.h"
 
 #include "ModelCube.h"
 
@@ -46,13 +48,22 @@ using namespace DirectX;
 #include "D3D/ModelRect.h"
 #include "SpriteClass.h"
 
+#include "fontdata/FontShader.h"
+
+#include "TextObjectClass.h"
+
 #include "TextureShader.h"
 #include "SpriteObjectClass.h"
+
+#include "enermyObject.h"
 #include "Model_mal.h"
 #include "Model_Mal_anis.h"
 #include "D3D/ColorShader.h" 
 #include "D3D/Camera.h"
 #include "D3D/D3DClass.h"
+
+#include "Mal_with_text.h"
+
 
 
 #include "GraphicsClass.h"

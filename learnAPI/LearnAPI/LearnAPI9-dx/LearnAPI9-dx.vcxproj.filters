@@ -25,6 +25,12 @@
     <Filter Include="소스 파일\D3D\ShaderData">
       <UniqueIdentifier>{dd2155d7-69c5-477d-9733-3a96619fb0d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="font">
+      <UniqueIdentifier>{5eca94f8-2d87-4fc8-b9ad-c1659ae11253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="font\NewFilter1">
+      <UniqueIdentifier>{d554152a-1f2e-4e18-871a-95fb31c4bfa6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -105,6 +111,21 @@
     <ClInclude Include="Model_Mal_anis.h">
       <Filter>소스 파일\D3D\Model</Filter>
     </ClInclude>
+    <ClInclude Include="fontdata\FontClass.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="fontdata\FontShader.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="TextObjectClass.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="Mal_with_text.h">
+      <Filter>font</Filter>
+    </ClInclude>
+    <ClInclude Include="enermyObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LearnAPI9-dx.cpp">
@@ -170,6 +191,21 @@
     <ClCompile Include="Model_Mal_anis.cpp">
       <Filter>소스 파일\D3D\Model</Filter>
     </ClCompile>
+    <ClCompile Include="fontdata\FontClass.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="fontdata\FontShader.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="TextObjectClass.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="Mal_with_text.cpp">
+      <Filter>font</Filter>
+    </ClCompile>
+    <ClCompile Include="enermyObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnAPI9-dx.rc">
@@ -189,6 +225,9 @@
     <Image Include="마알.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="fontdata\testfont.dds">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="D3D\Shader\Color.ps">
@@ -203,5 +242,16 @@
     <None Include="D3D\Shader\Texture.vs">
       <Filter>소스 파일\D3D\ShaderData</Filter>
     </None>
+    <None Include="fontdata\Font.vs">
+      <Filter>font</Filter>
+    </None>
+    <None Include="fontdata\Font.ps">
+      <Filter>font</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="fontdata\testfontdata.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
 </Project>

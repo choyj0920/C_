@@ -13,7 +13,7 @@ Model_mal2::Model_mal2()
 	_sizeV = 0;
 	_CheckTime = 0.0f;
 	_ani_count = 0;
-	_AniType = ANI_WORK3;
+	_AniType = ANI_WORK2;
 	rightwork = true;
 	_Model = NULL;
 }

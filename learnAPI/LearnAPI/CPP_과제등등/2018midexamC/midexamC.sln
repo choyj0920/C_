@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "midexamC", "midexamC\midexamC.vcxproj", "{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Debug|x64.ActiveCfg = Debug|x64
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Debug|x64.Build.0 = Debug|x64
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Debug|x86.ActiveCfg = Debug|Win32
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Debug|x86.Build.0 = Debug|Win32
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Release|x64.ActiveCfg = Release|x64
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Release|x64.Build.0 = Release|x64
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Release|x86.ActiveCfg = Release|Win32
+		{FE3B0DB9-97F9-4736-91DE-A3D7082BB618}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E2D3DC9-1CCA-4B61-BEB7-373D40360A4F}
+	EndGlobalSection
+EndGlobal

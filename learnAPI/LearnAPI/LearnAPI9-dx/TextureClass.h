@@ -2,7 +2,7 @@
 class TextureClass
 {
 	ID3D11ShaderResourceView* _Texture;
-	HRESULT CreateShaderResourceViewFromFile(ID3D11Device* device, const TCHAR*filename, const TCHAR* ext);
+	HRESULT CreateShaderResourceViewFromFile(ID3D11Device* device, const TCHAR*filename,const TCHAR* ext);
 
 public:
 	TextureClass();
